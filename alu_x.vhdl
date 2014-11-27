@@ -6,8 +6,8 @@ entity alu_x is
 	generic (width: integer := 32);
 	port (a, b: in std_logic_vector (width - 1 downto 0);
 	operation: in std_logic_vector (2 downto 0);
-	zero_flag: out std_logic;
-	result: out std_logic_vector (width - 1 downto 0));
+	result: out std_logic_vector (width - 1 downto 0);
+	zero_flag: out std_logic);
 end alu_x;
 
 architecture structural of alu_x is
@@ -49,20 +49,19 @@ architecture structural of alu_x is
 		output: out std_logic_vector (width - 1 downto 0));
 end component;
 
-	signal x0, x1, x2, x3, x4, x5, x6, x7: std_logic_vector (width - 1 downto 0);
-	signal result_int: std_logic_vector (width - 1 downto 0);
-	constant zeroes: std_logic_vector (width-1 downto 0):= (others => '0');
-
+	signal x0, x1, x2, x3, x4, x5, x6, x7: std_logic_vector (width - 1 downto 0); 
+  constant zeros : std_logic_vector ( width -1 downto 0 ) := (others => '0');
+  signal resul: std_logic_vector (width - 1 downto 0);
+	
 	begin
-	  
-	  result <= result_int;
 
 		and_x_1: and_x generic map (width) port map (a, b, x0);
 		or_x_1: or_x generic map (width) port map (a, b, x1);
 		adder: full_adder_x generic map (width) port map (a, b, x2);
 		subtractor: subtractor_x generic map (width) port map (a, b, x3);
 		slt: slt_x generic map (width) port map (a, b, x4);
-		multx: multiplexer generic map (width) port map (x0, x1, x2, x3, x4, x5, x6, x7, 			operation, result_int);
-    zero_flag <= '1' when result_int = zeroes else '0';
+		multx: multiplexer generic map (width) port map (x0, x1, x2, x3, x4, x5, x6, x7, 			operation, resul);
+		result <= resul;
+    zero_flag <= '1' when resul = zeros else '0';
     
 end structural;

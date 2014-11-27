@@ -27,24 +27,26 @@ architecture behavioral of instructions_memory is
 		2 => X"8C0A0001",
 		-- add $t0, $t0, $t1
 		3 => X"01094020",
+		-- addi $t4, $zero, 7
+		4 =>X"200C0007", 
 		-- beq $t0, $t1, -2
-		4 => X"1109FFFE",
-		-- bne $0, $0, -2
-		5 => X"1400FFFE",
-		-- bne $t0, $t1, 1
-		6 => X"15090001",
-		-- bne $0, $0, -2
-		7 => X"1400FFFE",
-		-- beq $0, $0, -3
-		8 => X"1000FFFD",
-		-- sw $t2, 0($t0)
-		9 => X"AD0A0000",
-		-- sw $t0, 0($t0)
-		--4 => X"AD080000",
+		5 => X"1109FFFE",
+		-- bne $t0, $0, -2
+		6 => X"1400FFFE",
+		-- bne, $t0, $t1, 1
+		7 => X"15090001",
+		-- bne, $0, $0, -2
+		8 => X"1400FFFE",
+		-- beq, $0, $0, -3
+		9 => X"1000FFFD",
+		-- sw, $t2, 0($t0)
+		10 => X"AD0A0000",
+		-- sw, $t2, 0($t0)
 		--j 3
-		10 => X"08000003",
+		11 => X"08000003",
 		
-
+		
+		
 		others => (others => 'U'));
 
 begin
