@@ -14,9 +14,10 @@ architecture behavioral of processor is
 	component program_counter 
 		generic (address_width: integer := 32);
 	port (
-		clock, enable, jump: in std_logic;
+		clock, enable, jump, branch: in std_logic;
 		next_address: out std_logic_vector (address_width - 1 downto 0);
-		jump_address: in std_logic_vector (address_width - 1 downto 0));
+		jump_address: in std_logic_vector (address_width - 1 downto 0);
+		branch_address: in std_logic_vector (address_width - 1 downto 0));
 	end component;
 
 	component state_register 
@@ -44,14 +45,16 @@ architecture behavioral of processor is
 	port (
 		clock: in std_logic;
 		instruction: in std_logic_vector (31 downto 0);
-		enable_program_counter, 
-    enable_alu_output_register: out std_logic := '0';
+		enable_program_counter,
+		enable_alu_output_register: out std_logic := '0';
 		register1, register2, register3: out std_logic_vector (4 downto 0);
 		write_register, mem_to_register: out std_logic;
 		source_alu, reg_dst: out std_logic;
 		alu_operation: out std_logic_vector (2 downto 0);
 		read_memory, write_memory: out std_logic;
 		offset: out std_logic_vector (31 downto 0);
+		branch: out std_logic;
+		branch_n: out std_logic;
 		jump_control: out std_logic;
 		jump_offset: out std_logic_vector(25 downto 0));
 	end component;
@@ -84,20 +87,21 @@ architecture behavioral of processor is
 	component alu_x
 		generic (width: integer := 32);
 
-		port (
-			a, b: in std_logic_vector (width - 1 downto 0);
-		operation: in std_logic_vector (2 downto 0);
-		result: out std_logic_vector (width - 1 downto 0));
+		port(
+		a, b: in std_logic_vector (width - 1 downto 0);
+	operation: in std_logic_vector (2 downto 0);
+	zero_flag: out std_logic;
+	result: out std_logic_vector (width - 1 downto 0));
 	end component;
 
 	signal clk: std_logic;
 
 	-- control signals for state elements.
 	signal enable_program_counter, 	
-		enable_alu_output_register, jump_control: std_logic;
+		enable_alu_output_register, jump_control, branch_control, branch, branch_n: std_logic;
 
 	-- Signals related to the instruction fetch state.
-	signal address_of_next_instruction, instruction, data_from_instruction_register, jump_address: 
+	signal address_of_next_instruction, instruction, data_from_instruction_register, jump_address, branch_address: 
 			std_logic_vector (31 downto 0);
 	signal	jump_offset: std_logic_vector(25 downto 0);
 
@@ -111,7 +115,7 @@ architecture behavioral of processor is
 	signal alu_operand1, alu_operand2: std_logic_vector(31 downto 0);
 	signal register_a, register_b, alu_result, 		
 	  data_from_alu_output_register: std_logic_vector (31 downto 0);
-	signal source_alu, reg_dst: std_logic;
+	signal source_alu, reg_dst, zero_flag: std_logic;
 	signal alu_operation: std_logic_vector (2 downto 0); 
 
 	-- Signals related to the memory access.
@@ -119,8 +123,7 @@ architecture behavioral of processor is
 	signal data_from_memory, offset: std_logic_vector (31 downto 0);
 	signal read_memory, write_memory: std_logic;
 
-begin
-
+begin  
     instruction_address <= address_of_next_instruction;
 		alu_operand1 <= register_a;
 		
@@ -135,13 +138,18 @@ begin
 		data_in_last_modified_register <= data_to_write_in_register;
 		
 		jump_address <= address_of_next_instruction(31 downto 26) & jump_offset;
+		
+		branch_address <= address_of_next_instruction + offset;
+    branch_control <= (branch and zero_flag) or (branch_n  and (NOT zero_flag));
 
 		pc: program_counter port map (
 		  clk, 
 		  enable_program_counter, 
-		  jump_control, 
+		  jump_control,
+		  branch_control, 
 		  address_of_next_instruction, 
-		  jump_address);
+		  jump_address,
+		  branch_address);
 
 		memory_of_instructions: instructions_memory port map (
 		  clk, 
@@ -166,7 +174,9 @@ begin
 		  alu_operation, 			
 		  read_memory, 
 		  write_memory, 
-		  offset, 
+		  offset,
+		  branch,
+		  branch_n, 
 		  jump_control, 
 		  jump_offset); 
 
@@ -184,7 +194,7 @@ begin
 
 --		alu_input_register_b: state_register port map (clk, enable_alu_input_registers, 			data_from_register2, alu_operand2);
 
-		alu: alu_x port map (alu_operand1, alu_operand2, alu_operation, alu_result);
+		alu: alu_x port map (alu_operand1, alu_operand2, alu_operation, zero_flag, alu_result);
 
 		alu_output_register: state_register port map (clk, enable_alu_output_register,	alu_result, data_from_alu_output_register);
 

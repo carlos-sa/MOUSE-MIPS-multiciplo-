@@ -24,9 +24,15 @@ add wave -group decode -radix hexadecimal sim:/t_processor/the_processor/alu_ope
 add wave -group decode -radix hexadecimal sim:/t_processor/the_processor/alu_operand2
 add wave -group decode -radix hexadecimal sim:/t_processor/the_processor/alu_result
 
+
 add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/enable_alu_output_register
 add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/source_alu
 add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/data_from_alu_output_register
+add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch
+add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch_control
+add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch_address
+add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/zero_flag
+add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch_n
 
 add wave -group mem -radix hexadecimal sim:/t_processor/the_processor/read_memory
 add wave -group mem -radix hexadecimal sim:/t_processor/the_processor/write_memory
@@ -56,6 +62,9 @@ add wave -group video -radix hexadecimal sim:/t_processor/VGA_B
 add wave -group video sim:/t_processor/VGA_HS_d
 add wave -group video sim:/t_processor/VGA_VS_d
 add wave -group video sim:/t_processor/disp_ena_d
+
+WaveRestoreCursors {{beq que nao salta} {195000 ps} 1} {{bne que nao salta} {224984 ps} 1} {{bne que salta p/ 8} {255000 ps} 1} {{beq que salta p/ 6} {285174 ps} 1}
+
 
 configure wave -shortnames 1
 
