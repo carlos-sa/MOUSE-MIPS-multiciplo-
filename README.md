@@ -4,3 +4,9 @@ PROJETO
 ======================
 
 Propor e implementar uma interface entre o processador trabalhado em aula e o mouse(PS/2), através da DE1, utilizando seus recursos visuais como LED's e displays para demonstrar o recebimento de dados do mouse.
+
+INTEGANTES
+=====================
+Ana Lucia Cardoso 
+Carlos Augusto Santo Andre Junior 
+Felipe José Bento da Silva 
