@@ -25,7 +25,7 @@ Membros
 
 - Ana Lucia Cardoso - Email: ana.lc18@gmail.com
 
-- Carlos Augusto Santo Andre Junior - 
+- Carlos Augusto Santo Andre Junior - carlos.santoandrea@hotmail.com
 
 - Felipe José Bento da Silva - Email: felipejosebento@outlook.com
 
