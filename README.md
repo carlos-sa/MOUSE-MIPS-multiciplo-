@@ -1,19 +1,19 @@
 Repositório - Arquitetura Mips, Multiciclo
-==========================================
 
-Projeto : Incrementando o Mouse
+= Projeto : Incrementando o Mouse
+
 
 
 Informaçoes do Projeto
 
 
-UFSCAR - Universidade Federal de São Carlos
+- UFSCAR - Universidade Federal de São Carlos
 
 
-Lab. de Arquitetura e Organização de Computadores 1
+- Lab. de Arquitetura e Organização de Computadores 1
 
 
-2014 - 2º Sem. - Turmas A
+- 2014 - 2º Sem. - Turmas A
 
 
 Membros
