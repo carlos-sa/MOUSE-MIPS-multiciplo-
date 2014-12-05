@@ -33,5 +33,17 @@ Membros
 Proposta
 -
 
-  Como objetivo principal objetivos do nosso projeto, temos a intenção de integrar o Mouse a nosso Multiciclo, sendo que esse   deve ter sua leitura feita pelo processador. 
-  Uma vez com esse primeiro passo realizado, devemos tentar passar essa informação para uma saída visual.
+    Como objetivo principal do nosso projeto, temos a intenção de integrar o Mouse a nosso Multiciclo, sendo que esse   deve ter sua leitura feita pelo processador. 
+    Uma vez esse primeiro passo realizado, devemos tentar passar essa informação para uma saída visual. O sinal recebido do mouse passara por um precessamento e será exibido no video, uma vez que o arquivo de video vhdl interativo com o nosso processador ja existe no projeto.
+    Para realizar o controle do mouse, vamos criar um novo componente, que teá o nome de  ps2_mouse, uma vez que esse novo     arquivo VHDL será incluido no projeto. 
+    Este novo componente ira implementar uma modular, que terá a função de controlador do protocolo PS2. 
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
