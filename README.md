@@ -34,45 +34,62 @@ Como objetivo principal objetivos do nosso projeto, temos a intenção de integr
 Desenvolvimento
 ====================
 
+
 A seguir sera postado por cada membro a sua contribuição em cada etapa do projeto:
+===================================================================================
+
 
 Etapa 1: Teste no Repositório e inclusao de algumas instruçoes
 
+
 Membro: Ana Lúcia Cardoso 
+
   
   <1> Arquivos Alterados:
   <2> Alteração Feita:
   <3> Qual o próximo passo ?: 
+
 
 Membro: Carlos Augusto
+
   
   <1> Arquivos Alterados:
   <2> Alteração Feita:
   <3> Qual o próximo passo ?: 
 
+
 Membro: Felipe José Bento
+  
   
   <1> Arquivos Alterados: 
   <2> Alteração Feita: 
   <3> Qual o próximo passo ?:  
   
+  
 Etapa 2: Atualizaçoes Teoricas no repositorios e inicio do Projeto 
+
 
 Membro: Ana Lúcia Cardoso 
   
-  <1> Arquivos Alterados:
-  <2> Alteração Feita:
-  <3> Qual o próximo passo ?: 
-
-Membro: Carlos Augusto
   
   <1> Arquivos Alterados:
   <2> Alteração Feita:
   <3> Qual o próximo passo ?: 
+
+
+Membro: Carlos Augusto
+
+
+  <1> Arquivos Alterados:
+  <2> Alteração Feita:
+  <3> Qual o próximo passo ?: 
+
 
 Membro: Felipe José Bento
   
+  
   <1> Arquivos Alterados:
   <2> Alteração Feita:
   <3> Qual o próximo passo ?: 
+
 
