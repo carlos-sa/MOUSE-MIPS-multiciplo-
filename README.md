@@ -6,7 +6,7 @@ Projeto : Incrementando o Mouse
 ================================
 
 
-Informaçoes sobro o Projeo
+Informaçoes do Projeo
 
 
 Lab. de Arquitetura e Organização de Computadores 1
