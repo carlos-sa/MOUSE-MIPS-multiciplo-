@@ -5,7 +5,7 @@ Repositório - Arquitetura Mips, Multiciclo
 -
 
 
-  Informaçoes do Projeto
+  Informaçoes do Projeto:
 -
 
 - UFSCAR - Universidade Federal de São Carlos
