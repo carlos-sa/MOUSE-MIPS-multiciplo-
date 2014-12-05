@@ -1,14 +1,78 @@
-Repositorio para o projeto da disciplina Laboratorio de Arquitetura e Orgaização de Computadores 1
+Repositório - Arquitetura Mips, Multiciclo
 
-PROJETO
+Projeto : Incrementando o Mouse
+
+
+Informaçoes sobro o Projeo
+=====================
+
+Lab. de Arquitetura e Organização de Computadores 1
+2014 - 2º Sem. - Turmas A
+
+MEMBROS DO PROJETO
+=====================
+
+<1> - Ana Lucia Cardoso - 
+
+<2> - Carlos Augusto Santo Andre Junior - 
+
+<3> - Felipe José Bento da Silva - Email: felipejosebento@outlook.com
+
+
+Introdução a Proposta
 ======================
 
-Propor e implementar uma interface entre o processador trabalhado em aula e o mouse(PS/2), através da DE1, utilizando seus recursos visuais como LED's e displays para demonstrar o recebimento de dados do mouse.
+Durante grande parte da diciplica mencionado acima, foi apresentado pelo professor o funcionamento e a estrutura do Mips Multiciclo. Os arquivos postados inicialmente no repositório, fazem parte do projeto Multiciclo Video, onde daremos partidas em nosso projeto.
 
-INTEGRANTES
 =====================
-Ana Lucia Cardoso 
 
-Carlos Augusto Santo Andre Junior 
+Proposta
 
-Felipe José Bento da Silva 
+Como objetivo principal objetivos do nosso projeto, temos a intenção de integrar o Mouse a nosso Multiciclo, sendo que esse deve ter sua leitura feita pelo processador. Uma vez com esse primeiro passo realizado, devemos tentar passar essa informação para uma saída visual.
+
+
+Desenvolvimento
+====================
+
+A seguir sera postado por cada membro a sua contribuição em cada etapa do projeto:
+
+Etapa 1: Teste no Repositório e inclusao de algumas instruçoes
+
+Membro: Ana Lúcia Cardoso 
+  
+  <1> Arquivos Alterados:
+  <2> Alteração Feita:
+  <3> Qual o próximo passo ?: 
+
+Membro: Carlos Augusto
+  
+  <1> Arquivos Alterados:
+  <2> Alteração Feita:
+  <3> Qual o próximo passo ?: 
+
+Membro: Felipe José Bento
+  
+  <1> Arquivos Alterados: 
+  <2> Alteração Feita: 
+  <3> Qual o próximo passo ?:  
+  
+Etapa 2: Atualizaçoes Teoricas no repositorios e inicio do Projeto 
+
+Membro: Ana Lúcia Cardoso 
+  
+  <1> Arquivos Alterados:
+  <2> Alteração Feita:
+  <3> Qual o próximo passo ?: 
+
+Membro: Carlos Augusto
+  
+  <1> Arquivos Alterados:
+  <2> Alteração Feita:
+  <3> Qual o próximo passo ?: 
+
+Membro: Felipe José Bento
+  
+  <1> Arquivos Alterados:
+  <2> Alteração Feita:
+  <3> Qual o próximo passo ?: 
+
