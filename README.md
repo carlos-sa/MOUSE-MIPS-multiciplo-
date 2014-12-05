@@ -4,7 +4,7 @@ Repositório - Arquitetura Mips, Multiciclo
 Projeto : Incrementando o Mouse
 
 
-Informaçoes do Projeo
+Informaçoes do Projeto
 
 
 UFSCAR - Universidade Federal de São Carlos
