@@ -2,38 +2,39 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 
-entity ps2_mouse_test is
+entity ps2_mouse is
 	port
 	(
 		------------------------	Clock Input	 	------------------------
-		CLOCK_24	: 	in	STD_LOGIC_VECTOR (1 downto 0);	--	24 MHz
-		CLOCK_27	:		in	STD_LOGIC_VECTOR (1 downto 0);	--	27 MHz
-		CLOCK_50	: 	in	STD_LOGIC;											--	50 MHz
+		CLOCK_24_int	: 	in	STD_LOGIC_VECTOR (1 downto 0);	--	24 MHz
 		CLOCK_300	: 	out	STD_LOGIC;											--	300 KHz
 		
 		------------------------	Push Button		------------------------
-		KEY 	:		in	STD_LOGIC_VECTOR (3 downto 0);		--	Pushbutton[3:0]
+		KEY_int 	:		in	STD_LOGIC_VECTOR (3 downto 0);		--	Pushbutton[3:0]
 
-		------------------------	DPDT Switch		------------------------
-		SW 	:		in	STD_LOGIC_VECTOR (9 downto 0);			--	Toggle Switch[9:0]
 		
 		------------------------	7-SEG Dispaly	------------------------
-		HEX0 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 0
-		HEX1 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 1
-		HEX2 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 2
-		HEX3 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 3
+		HEXA0 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 0
+		HEXA1 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 1
+		HEXA2 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 2
+		HEXA3 	:		out	STD_LOGIC_VECTOR (6 downto 0);		--	Seven Segment Digit 3
+		
+		------------------------  Deslocamentos dos eixos em valores inteiros ------
+		dxout:		out	std_logic_vector(7 downto 0);
+		dyout:			out	std_logic_vector(7 downto 0);
+		
 		
 		----------------------------	LED		----------------------------
-		LEDG 	:		out	STD_LOGIC_VECTOR (7 downto 0);		--	LED Green[7:0]
-		LEDR 	:		out	STD_LOGIC_VECTOR (9 downto 0);		--	LED Red[9:0]
+		LEDsigG 	:		out	STD_LOGIC_VECTOR (7 downto 0);		--	LED Green[7:0]
+		LEDsigR 	:		out	STD_LOGIC_VECTOR (9 downto 0);		--	LED Red[9:0]
 					
 		------------------------	PS2		--------------------------------
-		PS2_DAT 	:		inout	STD_LOGIC;	--	PS2 Data
-		PS2_CLK		:		inout	STD_LOGIC		--	PS2 Clock
+		PS2_DAT_int 	:		inout	STD_LOGIC;	--	PS2 Data
+		PS2_CLK_int		:		inout	STD_LOGIC		--	PS2 Clock
 	);
 end;
 
-architecture struct of ps2_mouse_test is
+architecture struct of ps2_mouse is
 	component conv_7seg
 		port(
 			D				:		in STD_LOGIC_VECTOR (3 downto 0);
@@ -67,24 +68,25 @@ architecture struct of ps2_mouse_test is
 	constant SENSIBILITY : integer := 16; -- Rise to decrease sensibility
 begin 
 	-- KEY(0) Reset
-	resetn <= KEY(0);
-	
+	resetn <= KEY_int(0);
+	dxout <= x;
+	dyout <= y;
 	mousectrl : mouse_ctrl generic map (24000) port map(
-		PS2_DAT, PS2_CLK, CLOCK_24(0), '1', KEY(0),
-		signewdata, LEDG(7 downto 5), LEDR(9), LEDR(7), dx, dy, LEDG(3 downto 0)
+		PS2_DAT_int, PS2_CLK_int, CLOCK_24_int(0), '1', KEY_int(0),
+		signewdata, LEDsigG(7 downto 5), LEDsigR(9), LEDsigR(7), dx, dy, LEDsigG(3 downto 0)
 	);
 	
 	hexseg0: conv_7seg port map(
-		hexdata(3 downto 0), HEX0
+		hexdata(3 downto 0), HEXA0
 	);
 	hexseg1: conv_7seg port map(
-		hexdata(7 downto 4), HEX1
+		hexdata(7 downto 4), HEXA1
 	);
 	hexseg2: conv_7seg port map(
-		hexdata(11 downto 8), HEX2
+		hexdata(11 downto 8), HEXA2
 	);
 	hexseg3: conv_7seg port map(
-		hexdata(15 downto 12), HEX3
+		hexdata(15 downto 12), HEXA3
 	);	
 	
 	-- Read new mouse data	
@@ -111,10 +113,10 @@ begin
 	hexdata(15 downto 12) <= x(7 downto 4);
 
 	-- 100 KHz clock	
-	process(CLOCK_24(0))
+	process(CLOCK_24_int(0))
 		variable count : integer range 0 to 240 := 0;		
 	begin
-		if(CLOCK_24(0)'event and CLOCK_24(0) = '1') then
+		if(CLOCK_24_int(0)'event and CLOCK_24_int(0) = '1') then
 			if count < 240 / 2 then
 				CLOCK_100 <= '1';
 			else 
@@ -128,10 +130,10 @@ begin
 	end process;
 	
 	-- 300 KHz clock
-	process(CLOCK_24(0))
+	process(CLOCK_24_int(0))
 		variable count : integer range 0 to 80 := 0;		
 	begin
-		if(CLOCK_24(0)'event and CLOCK_24(0) = '1') then
+		if(CLOCK_24_int(0)'event and CLOCK_24_int(0) = '1') then
 			if count < 80 / 2 then
 				CLOCK_300 <= '1';
 			else 
@@ -145,13 +147,13 @@ begin
 	end process;
 	
 	-- Hz clock	
-	process(CLOCK_24(0))
+	process(CLOCK_24_int(0))
 		constant F_HZ : integer := 1000000;
 		
 		constant DIVIDER : integer := 24000000/F_HZ;
 		variable count : integer range 0 to DIVIDER := 0;		
 	begin
-		if(rising_edge(CLOCK_24(0))) then
+		if(rising_edge(CLOCK_24_int(0))) then
 			if count < DIVIDER / 2 then
 				CLOCKHZ <= '1';
 			else 

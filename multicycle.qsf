@@ -49,23 +49,6 @@ set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 7
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
-set_global_assignment -name QIP_FILE vga_pll.qip
-set_global_assignment -name VHDL_FILE vga_pll.vhd
-set_global_assignment -name VHDL_FILE subtractor_x.vhdl
-set_global_assignment -name VHDL_FILE state_register.vhdl
-set_global_assignment -name VHDL_FILE slt_x.vhdl
-set_global_assignment -name VHDL_FILE register_bank.vhdl
-set_global_assignment -name VHDL_FILE program_counter.vhdl
-set_global_assignment -name VHDL_FILE processor.vhdl
-set_global_assignment -name VHDL_FILE or_x.vhdl
-set_global_assignment -name VHDL_FILE multiplexer.vhdl
-set_global_assignment -name VHDL_FILE instructions_memory.vhdl
-set_global_assignment -name VHDL_FILE full_adder_x.vhdl
-set_global_assignment -name VHDL_FILE data_memory.vhdl
-set_global_assignment -name VHDL_FILE and_x.vhdl
-set_global_assignment -name VHDL_FILE alu_x.vhdl
-set_global_assignment -name VHDL_FILE adder.vhdl
-set_global_assignment -name VHDL_FILE DE1.vhd
 set_location_assignment PIN_L22 -to SW[0]
 set_location_assignment PIN_L21 -to SW[1]
 set_location_assignment PIN_M22 -to SW[2]
@@ -351,8 +334,6 @@ set_location_assignment PIN_A12 -to CLOCK_24[1]
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
-set_global_assignment -name VHDL_FILE vga_controller.vhd
-set_global_assignment -name SDC_FILE output_files/SDC1.sdc
 set_global_assignment -name TIMEQUEST_DO_REPORT_TIMING ON
 set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
@@ -362,6 +343,29 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name VHDL_FILE ps2_mouse.vhd
+set_global_assignment -name VHDL_FILE ps2_base.vhd
+set_global_assignment -name VHDL_FILE mouse_ctrl.vhd
+set_global_assignment -name VHDL_FILE conv_7seg.vhd
+set_global_assignment -name QIP_FILE vga_pll.qip
+set_global_assignment -name VHDL_FILE vga_pll.vhd
+set_global_assignment -name VHDL_FILE subtractor_x.vhdl
+set_global_assignment -name VHDL_FILE state_register.vhdl
+set_global_assignment -name VHDL_FILE slt_x.vhdl
+set_global_assignment -name VHDL_FILE register_bank.vhdl
+set_global_assignment -name VHDL_FILE program_counter.vhdl
+set_global_assignment -name VHDL_FILE processor.vhdl
+set_global_assignment -name VHDL_FILE or_x.vhdl
+set_global_assignment -name VHDL_FILE multiplexer.vhdl
+set_global_assignment -name VHDL_FILE instructions_memory.vhdl
+set_global_assignment -name VHDL_FILE full_adder_x.vhdl
+set_global_assignment -name VHDL_FILE data_memory.vhdl
+set_global_assignment -name VHDL_FILE and_x.vhdl
+set_global_assignment -name VHDL_FILE alu_x.vhdl
+set_global_assignment -name VHDL_FILE adder.vhdl
+set_global_assignment -name VHDL_FILE DE1.vhd
+set_global_assignment -name VHDL_FILE vga_controller.vhd
+set_global_assignment -name SDC_FILE output_files/SDC1.sdc
 set_global_assignment -name VHDL_FILE control_unit.vhdl
 set_global_assignment -name VHDL_FILE address_video.vhd
 set_global_assignment -name VHDL_FILE dec7seg.vhd
