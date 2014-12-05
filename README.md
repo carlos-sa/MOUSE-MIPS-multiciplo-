@@ -1,12 +1,12 @@
 Repositório - Arquitetura Mips, Multiciclo
 =
 
-Projeto : Incrementando o Mouse
+  Projeto : Incrementando o Mouse
 -
 
 
-Informaçoes do Projeto
-
+  Informaçoes do Projeto
+>
 
 - UFSCAR - Universidade Federal de São Carlos
 
@@ -29,12 +29,12 @@ Membros
 
 
 
-Durante grande parte da diciplica mencionado acima, foi apresentado pelo professor o funcionamento e a estrutura do Mips Multiciclo. Os arquivos postados inicialmente no repositório, fazem parte do projeto Multiciclo Video, onde daremos partidas em nosso projeto.
+  Durante grande parte da diciplica mencionado acima, foi apresentado pelo professor o funcionamento e a estrutura do Mips Multiciclo. Os arquivos postados inicialmente no repositório, fazem parte do projeto Multiciclo Video, onde daremos partidas em nosso projeto.
 
 
 Proposta
 -
 
-Como objetivo principal objetivos do nosso projeto, temos a intenção de integrar o Mouse a nosso Multiciclo, sendo que esse deve ter sua leitura feita pelo processador. Uma vez com esse primeiro passo realizado, devemos tentar passar essa informação para uma saída visual.
+  Como objetivo principal objetivos do nosso projeto, temos a intenção de integrar o Mouse a nosso Multiciclo, sendo que esse deve ter sua leitura feita pelo processador. Uma vez com esse primeiro passo realizado, devemos tentar passar essa informação para uma saída visual.
 
 
