@@ -35,5 +35,3 @@ Proposta
 
   Como objetivo principal objetivos do nosso projeto, temos a intenção de integrar o Mouse a nosso Multiciclo, sendo que esse   deve ter sua leitura feita pelo processador. 
   Uma vez com esse primeiro passo realizado, devemos tentar passar essa informação para uma saída visual.
-
-
