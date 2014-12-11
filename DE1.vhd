@@ -19,7 +19,9 @@ ENTITY de1 IS
     HEX3      : OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
     HEX2      : OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
     HEX1      : OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
-    HEX0      : OUT  STD_LOGIC_VECTOR(6 DOWNTO 0));
+    HEX0      : OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		PS2_DAT 	:	inout	STD_LOGIC;	--	PS2 Data
+		PS2_CLK	:	inout	STD_LOGIC);		--	PS2 Clock
 END de1;
 
 ARCHITECTURE behavior OF de1 IS
@@ -28,7 +30,8 @@ component processor
 	port (clock, turn_off: in std_logic;
 		instruction_address, current_instruction, data_in_last_modified_register, video_out: 
 		out std_logic_vector (31 downto 0);
-    video_address: in std_logic_vector(11 downto 0));
+    video_address: in std_logic_vector(11 downto 0);
+	 d_col,d_row:   in std_logic_vector(9 downto 0));
 end component;
 
 COMPONENT vga_controller
@@ -75,6 +78,16 @@ component address_video
 		VGA_B 		   : OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
 END component;
 
+component mouse port(
+		  clock_ms, reset_ms                   : IN std_logic;
+        SIGNAL data_mouse                                       : INOUT std_logic;
+        SIGNAL clock_mouse                                      : INOUT std_logic;
+        SIGNAL left_button, right_button: OUT std_logic;
+                SIGNAL mouse_cursor_row                 : OUT std_logic_vector(9 DOWNTO 0); 
+                SIGNAL mouse_cursor_column              : OUT std_logic_vector(9 DOWNTO 0)
+	);
+end component;
+
 component dec7seg
   PORT(
     hex_digit  : IN  STD_LOGIC_VECTOR(3 downto 0);
@@ -86,11 +99,13 @@ SIGNAL disp_ena, pixel_clk: std_logic;
 SIGNAL row, column: integer;
 SIGNAL video_address: std_LOGIC_VECTOR(11 downto 0);
 signal instruction_address, current_instruction, data_in_last_modified_register, video_out: std_logic_vector(31 downto 0);
+signal res: std_logic;
+signal m_row, m_col: std_LOGIC_VECTOR(9 downto 0);
 
 BEGIN
 
-  LEDR <= data_in_last_modified_register(9 downto 0);
-  LEDG <= current_instruction(31 downto 24);
+  --LEDR <= data_in_last_modified_register(9 downto 0);
+  --LEDG <= current_instruction(31 downto 24);
   
   d3: dec7seg port map (
     instruction_address(15 downto 12),
@@ -118,7 +133,8 @@ BEGIN
     instruction_address,	
     current_instruction, 
     data_in_last_modified_register, 
-    video_out, video_address);
+    video_out, video_address,
+	 m_row, m_col);
 
   docoder: address_video port map (
     column,
@@ -129,6 +145,15 @@ BEGIN
 		VGA_R,
 		VGA_G,
 		VGA_B); 
+		
+	m: mouse port map(
+	clock_ms => CLOCK_24(0),
+	reset_ms => res,
+	data_mouse => PS2_DAT,
+	clock_mouse=>PS2_CLK, 
+	mouse_cursor_row => m_row,
+	mouse_cursor_column => m_col
+	);
 
   video: vga_controller port map (
     pixel_clk, 

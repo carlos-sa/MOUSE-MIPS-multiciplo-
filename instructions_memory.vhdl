@@ -21,38 +21,12 @@ architecture behavioral of instructions_memory is
 	signal instructions: instructions_sequence :=
 		-- lw $t0, 0($0)
    (0 => X"8C080000",
-    1 => X"200f0006",
-    2 => X"20100005",
-    3 => X"01f08822",
-		-- lw $t1, 0($0)
-    --1 => X"8C090000",
-    -- addi 2 no v0
-    --2 => X"20020002",
-    -- sll $t5, $t1 shift left 2
-    --3 => X"00096880",
-    -- srl $t6, $t5 shift right 2
-    --4 => X"000d7042",
-		-- lw $t2, 1($0)
-		--2 => X"8C0A0001",
-		-- add $t0, $t0, $t1
-		--3 => X"01094020",
-		-- addi $t4, $zero, 7
-		--4 =>X"200C0007", 
-		-- beq $t0, $t1, -2
-		--5 => X"1109FFFE",
-		-- bne $t0, $0, -2
-		--6 => X"1400FFFE",
-		-- bne, $t0, $t1, 1
-		--7 => X"15090001",
-		-- bne, $0, $0, -2
-		--8 => X"1400FFFE",
-		-- beq, $0, $0, -3
-		--9 => X"1000FFFD",
-		-- sw, $t2, 0($t0)
-		--10 => X"AD0A0000",
-		-- sw, $t2, 0($t0)
-		--j 3
-		--11 => X"08000003",
+	   -- mtr $a0, $a1
+	 1 => X"54042800",
+		-- sw $a1, 0 ($t0)
+	 2 => X"ad050000",
+	   -- j 1
+	 3 => X"08100000",
 		
 		
 		

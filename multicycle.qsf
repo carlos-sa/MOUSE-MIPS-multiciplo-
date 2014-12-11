@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C20F484C7
-set_global_assignment -name TOP_LEVEL_ENTITY control_unit
+set_global_assignment -name TOP_LEVEL_ENTITY DE1
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:32:28  MAY 23, 2014"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
@@ -338,6 +338,7 @@ set_global_assignment -name TIMEQUEST_DO_REPORT_TIMING ON
 set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_FILE mouse.vhd
 set_global_assignment -name VHDL_FILE sll_x.vhd
 set_global_assignment -name QIP_FILE vga_pll.qip
 set_global_assignment -name VHDL_FILE vga_pll.vhd

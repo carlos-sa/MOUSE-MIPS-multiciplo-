@@ -10,7 +10,8 @@ entity control_unit is
 		enable_program_counter,
 		enable_alu_output_register: out std_logic := '0';
 		register1, register2, register3: out std_logic_vector (4 downto 0);
-		write_register, mem_to_register: out std_logic;
+		write_register: out std_logic; 
+		mem_to_register: out std_logic_vector (1 downto 0);
 	  reg_dst: out std_logic;
 	  source_alu: out std_logic_vector (1 downto 0);
 		alu_operation: out std_logic_vector (2 downto 0);
@@ -37,6 +38,7 @@ architecture behavioral of control_unit is
   constant   beq:  std_logic_vector (5 downto 0) := "000100";
   constant   bne:  std_logic_vector (5 downto 0) := "000101";
   constant  addi: std_logic_vector (5 downto 0) := "001000";
+  constant mtr: std_logic_vector (5 downto 0) := "010101";
 
 
 	function extend_to_32(input: std_logic_vector (15 downto 0)) return std_logic_vector is 
@@ -68,7 +70,7 @@ begin
 		read_memory <= '0';
 		reg_dst <= '0';
 		source_alu <= "00";
-   	mem_to_register <= '0';
+   	mem_to_register <= "00";
 		write_memory <= '0';
 		write_register <= '0';
     branch <= '0';
@@ -110,7 +112,13 @@ begin
 				elsif opcode = addi then  
  					alu_operation <= "010";
  					source_alu <= "01";
- 					next_state <= writeback; 
+ 					next_state <= writeback;
+				elsif opcode = mtr then
+					mem_to_register <= "10";
+					write_register <= '1';
+					next_state <= writeback;
+					
+					
 				elsif opcode = r then
 					if opcode_r = "000010" then
 						alu_operation <= "110";
@@ -149,9 +157,12 @@ begin
 			when writeback =>
 				-- write regiter result
         if opcode = lw then
-   				mem_to_register <= '1';
+   				mem_to_register <= "01";
    	  elsif opcode = addi then
  				  reg_dst <= '0';
+		  elsif opcode = mtr then
+					mem_to_register <= "11";
+					reg_dst <= '1';
         else 
 				  reg_dst <= '1';
         end if;

@@ -6,7 +6,8 @@ entity processor is
 	port (clock, turn_off: in std_logic;
 		instruction_address, current_instruction, data_in_last_modified_register, video_out: 
 		out std_logic_vector (31 downto 0);
-    video_address: in std_logic_vector(11 downto 0));
+    video_address: in std_logic_vector(11 downto 0);
+	 d_col,d_row:   in std_logic_vector(9 downto 0));
 end processor;
 
 architecture behavioral of processor is
@@ -48,7 +49,8 @@ end component;
 		enable_program_counter, 
     enable_alu_output_register: out std_logic := '0';
 		register1, register2, register3: out std_logic_vector (4 downto 0);
-		write_register, mem_to_register: out std_logic;
+		write_register: out std_logic;
+		mem_to_register: out std_logic_vector(1 downto 0);
 		reg_dst: out std_logic;
 		source_alu: out std_logic_vector (1 downto 0);
 		alu_operation: out std_logic_vector (2 downto 0);
@@ -101,6 +103,9 @@ end component;
 	-- control signals for state elements.
 	signal enable_program_counter, 	
 		enable_alu_output_register, jump_control, branch_control, zero_flag, branch, branch2: std_logic;
+		
+	-- Sinais do mouse
+	signal row_ext, col_ext : std_logic_vector(31 downto 0);
 
 	-- Signals related to the instruction fetch state.
 	signal address_of_next_instruction, instruction, data_from_instruction_register, jump_address, branch_address: 
@@ -111,7 +116,8 @@ end component;
 	signal destination_register, register1, register2, register3: std_logic_vector (4 downto 0);
 	signal data_from_register1, data_from_register2, data_to_write_in_register: 
 		std_logic_vector (31 downto 0); 
-	signal write_register, mem_to_register: std_logic;
+	signal write_register : std_logic;
+	signal mem_to_register: std_logic_vector(1 downto 0);
 
 	-- Signals related to the ALU.
 	signal alu_operand1, alu_operand2: std_logic_vector(31 downto 0);
@@ -133,10 +139,18 @@ begin
     instruction_address <= address_of_next_instruction;
 		alu_operand1 <= register_a when source_a = '0' else register_b;
 		
+		col_ext(9 downto 0) <= d_col (9 downto 0);
+		row_ext(9 downto 0) <= d_row (9 downto 0);
+		col_ext(31 downto 10) <= "0000000000000000000000";
+		row_ext(31 downto 10) <= "0000000000000000000000";
+		
 		offset_shift(4 downto 0) <= instruction(10 downto 6);
 		offset_shift(31 downto 5) <= "000000000000000000000000000";
 		alu_operand2 <= register_b when source_alu = "00" else offset when source_alu = "01" else offset_shift;
-		data_to_write_in_register <= data_from_memory when mem_to_register = '1' else data_from_alu_output_register; 
+		data_to_write_in_register <= data_from_memory when mem_to_register = "01" else 
+												data_from_alu_output_register when mem_to_register = "00" else
+												col_ext when mem_to_register = "10" else
+												row_ext when mem_to_register = "11";
 		destination_register <= register2 when reg_dst = '0' else register3;
 		
 		address_to_read <= data_from_alu_output_register;

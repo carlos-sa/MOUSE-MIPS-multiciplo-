@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="multicycle">
+		<CBX_INST_ENTRY INSTANCE_NAME="|de1|processor:cpu|data_memory:memory_of_data|altsyncram:data_rtl_0" CBX_FILE_NAME="altsyncram_d002.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de1|processor:cpu|instructions_memory:memory_of_instructions|altsyncram:instructions_rtl_0" CBX_FILE_NAME="altsyncram_i991.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
