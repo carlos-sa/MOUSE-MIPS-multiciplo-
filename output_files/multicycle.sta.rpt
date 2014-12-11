@@ -1,0 +1,1546 @@
+TimeQuest Timing Analyzer report for multicycle
+Thu Dec 11 13:40:55 2014
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'clock'
+ 12. Slow Model Hold: 'clock'
+ 13. Slow Model Minimum Pulse Width: 'clock'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Propagation Delay
+ 19. Minimum Propagation Delay
+ 20. Fast Model Setup Summary
+ 21. Fast Model Hold Summary
+ 22. Fast Model Recovery Summary
+ 23. Fast Model Removal Summary
+ 24. Fast Model Minimum Pulse Width Summary
+ 25. Fast Model Setup: 'clock'
+ 26. Fast Model Hold: 'clock'
+ 27. Fast Model Minimum Pulse Width: 'clock'
+ 28. Setup Times
+ 29. Hold Times
+ 30. Clock to Output Times
+ 31. Minimum Clock to Output Times
+ 32. Propagation Delay
+ 33. Minimum Propagation Delay
+ 34. Multicorner Timing Analysis Summary
+ 35. Setup Times
+ 36. Hold Times
+ 37. Clock to Output Times
+ 38. Minimum Clock to Output Times
+ 39. Progagation Delay
+ 40. Minimum Progagation Delay
+ 41. Setup Transfers
+ 42. Hold Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths
+ 46. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                      ;
++--------------------+-------------------------------------------------------------------+
+; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; multicycle                                                        ;
+; Device Family      ; Cyclone II                                                        ;
+; Device Name        ; EP2C20F484C7                                                      ;
+; Timing Models      ; Final                                                             ;
+; Delay Model        ; Combined                                                          ;
+; Rise/Fall Delays   ; Unavailable                                                       ;
++--------------------+-------------------------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ; < 0.1%      ;
+;     Processors 3-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                            ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets   ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
+; clock      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clock } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Slow Model Fmax Summary                                                                                   ;
++------------+-----------------+------------+---------------------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
++------------+-----------------+------------+---------------------------------------------------------------+
+; 652.32 MHz ; 380.08 MHz      ; clock      ; limit due to minimum period restriction (max I/O toggle rate) ;
++------------+-----------------+------------+---------------------------------------------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++--------------------------------+
+; Slow Model Setup Summary       ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clock ; -0.533 ; -3.391        ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Slow Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clock ; 0.633 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clock ; -1.631 ; -24.849               ;
++-------+--------+-----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'clock'                                                                                                             ;
++--------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node            ; To Node                         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.533 ; next_state.alu       ; next_state.alu                  ; clock        ; clock       ; 1.000        ; 0.000      ; 1.571      ;
+; -0.519 ; next_state.alu       ; next_state.fetch                ; clock        ; clock       ; 1.000        ; 0.000      ; 1.557      ;
+; -0.502 ; next_state.mem       ; next_state.fetch                ; clock        ; clock       ; 1.000        ; 0.000      ; 1.540      ;
+; -0.363 ; next_state.mem       ; next_state.writeback            ; clock        ; clock       ; 1.000        ; 0.000      ; 1.401      ;
+; -0.359 ; next_state.alu       ; jump_control~reg0               ; clock        ; clock       ; 1.000        ; -0.001     ; 1.396      ;
+; -0.359 ; next_state.alu       ; branch2~reg0                    ; clock        ; clock       ; 1.000        ; -0.001     ; 1.396      ;
+; -0.358 ; next_state.alu       ; branch~reg0                     ; clock        ; clock       ; 1.000        ; -0.001     ; 1.395      ;
+; -0.266 ; next_state.alu       ; enable_alu_output_register~reg0 ; clock        ; clock       ; 1.000        ; -0.001     ; 1.303      ;
+; -0.185 ; next_state.writeback ; write_register~reg0             ; clock        ; clock       ; 1.000        ; 0.000      ; 1.223      ;
+; -0.174 ; next_state.writeback ; next_state.fetch                ; clock        ; clock       ; 1.000        ; 0.000      ; 1.212      ;
+; -0.169 ; next_state.writeback ; reg_dst~reg0                    ; clock        ; clock       ; 1.000        ; 0.000      ; 1.207      ;
+; -0.123 ; next_state.alu       ; source_alu~reg0                 ; clock        ; clock       ; 1.000        ; 0.000      ; 1.161      ;
+; -0.100 ; next_state.fetch     ; enable_program_counter~reg0     ; clock        ; clock       ; 1.000        ; 0.000      ; 1.138      ;
+; -0.057 ; next_state.alu       ; next_state.mem                  ; clock        ; clock       ; 1.000        ; 0.000      ; 1.095      ;
+; -0.055 ; next_state.alu       ; next_state.writeback            ; clock        ; clock       ; 1.000        ; 0.000      ; 1.093      ;
+; 0.014  ; next_state.decode    ; next_state.alu                  ; clock        ; clock       ; 1.000        ; 0.000      ; 1.024      ;
+; 0.109  ; next_state.writeback ; mem_to_register~reg0            ; clock        ; clock       ; 1.000        ; 0.000      ; 0.929      ;
+; 0.119  ; next_state.fetch     ; next_state.decode               ; clock        ; clock       ; 1.000        ; 0.000      ; 0.919      ;
+; 0.119  ; next_state.mem       ; read_memory~reg0                ; clock        ; clock       ; 1.000        ; 0.000      ; 0.919      ;
+; 0.119  ; next_state.mem       ; write_memory~reg0               ; clock        ; clock       ; 1.000        ; 0.000      ; 0.919      ;
++--------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'clock'                                                                                                             ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node            ; To Node                         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.633 ; next_state.fetch     ; next_state.decode               ; clock        ; clock       ; 0.000        ; 0.000      ; 0.919      ;
+; 0.633 ; next_state.mem       ; read_memory~reg0                ; clock        ; clock       ; 0.000        ; 0.000      ; 0.919      ;
+; 0.633 ; next_state.mem       ; write_memory~reg0               ; clock        ; clock       ; 0.000        ; 0.000      ; 0.919      ;
+; 0.643 ; next_state.writeback ; mem_to_register~reg0            ; clock        ; clock       ; 0.000        ; 0.000      ; 0.929      ;
+; 0.738 ; next_state.decode    ; next_state.alu                  ; clock        ; clock       ; 0.000        ; 0.000      ; 1.024      ;
+; 0.807 ; next_state.alu       ; next_state.writeback            ; clock        ; clock       ; 0.000        ; 0.000      ; 1.093      ;
+; 0.809 ; next_state.alu       ; next_state.mem                  ; clock        ; clock       ; 0.000        ; 0.000      ; 1.095      ;
+; 0.852 ; next_state.fetch     ; enable_program_counter~reg0     ; clock        ; clock       ; 0.000        ; 0.000      ; 1.138      ;
+; 0.875 ; next_state.alu       ; source_alu~reg0                 ; clock        ; clock       ; 0.000        ; 0.000      ; 1.161      ;
+; 0.921 ; next_state.writeback ; reg_dst~reg0                    ; clock        ; clock       ; 0.000        ; 0.000      ; 1.207      ;
+; 0.926 ; next_state.writeback ; next_state.fetch                ; clock        ; clock       ; 0.000        ; 0.000      ; 1.212      ;
+; 0.937 ; next_state.writeback ; write_register~reg0             ; clock        ; clock       ; 0.000        ; 0.000      ; 1.223      ;
+; 1.018 ; next_state.alu       ; enable_alu_output_register~reg0 ; clock        ; clock       ; 0.000        ; -0.001     ; 1.303      ;
+; 1.110 ; next_state.alu       ; branch~reg0                     ; clock        ; clock       ; 0.000        ; -0.001     ; 1.395      ;
+; 1.111 ; next_state.alu       ; jump_control~reg0               ; clock        ; clock       ; 0.000        ; -0.001     ; 1.396      ;
+; 1.111 ; next_state.alu       ; branch2~reg0                    ; clock        ; clock       ; 0.000        ; -0.001     ; 1.396      ;
+; 1.115 ; next_state.mem       ; next_state.writeback            ; clock        ; clock       ; 0.000        ; 0.000      ; 1.401      ;
+; 1.254 ; next_state.mem       ; next_state.fetch                ; clock        ; clock       ; 0.000        ; 0.000      ; 1.540      ;
+; 1.271 ; next_state.alu       ; next_state.fetch                ; clock        ; clock       ; 0.000        ; 0.000      ; 1.557      ;
+; 1.285 ; next_state.alu       ; next_state.alu                  ; clock        ; clock       ; 0.000        ; 0.000      ; 1.571      ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'clock'                                                                              ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                              ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------------+
+; -1.631 ; 1.000        ; 2.631          ; Port Rate        ; clock ; Rise       ; clock                               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; alu_operation[0]~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[0]~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; alu_operation[1]~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[1]~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; alu_operation[2]~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[2]~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; branch2~reg0                        ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; branch2~reg0                        ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; branch~reg0                         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; branch~reg0                         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; enable_alu_output_register~reg0     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; enable_alu_output_register~reg0     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; enable_program_counter~reg0         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; enable_program_counter~reg0         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; jump_control~reg0                   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; jump_control~reg0                   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; mem_to_register~reg0                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; mem_to_register~reg0                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; next_state.alu                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; next_state.alu                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; next_state.decode                   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; next_state.decode                   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; next_state.fetch                    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; next_state.fetch                    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; next_state.mem                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; next_state.mem                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; next_state.writeback                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; next_state.writeback                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; read_memory~reg0                    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; read_memory~reg0                    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; reg_dst~reg0                        ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; reg_dst~reg0                        ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; source_alu~reg0                     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; source_alu~reg0                     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; write_memory~reg0                   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; write_memory~reg0                   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clock ; Rise       ; write_register~reg0                 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clock ; Rise       ; write_register~reg0                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[0]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[0]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[1]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[1]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[2]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[2]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; branch2~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; branch2~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; branch~reg0|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; branch~reg0|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; clock|combout                       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; clock|combout                       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; clock~clkctrl|inclk[0]              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; clock~clkctrl|inclk[0]              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; clock~clkctrl|outclk                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; clock~clkctrl|outclk                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; enable_alu_output_register~reg0|clk ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; enable_alu_output_register~reg0|clk ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; enable_program_counter~reg0|clk     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; enable_program_counter~reg0|clk     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; jump_control~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; jump_control~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; mem_to_register~reg0|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; mem_to_register~reg0|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.alu|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.alu|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.decode|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.decode|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.fetch|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.fetch|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.mem|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.mem|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.writeback|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.writeback|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; read_memory~reg0|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; read_memory~reg0|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; reg_dst~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; reg_dst~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; source_alu~reg0|clk                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; source_alu~reg0|clk                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; write_memory~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; write_memory~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; write_register~reg0|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; write_register~reg0|clk             ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++------------------+------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+------------+-------+-------+------------+-----------------+
+; instruction[*]   ; clock      ; 7.596 ; 7.596 ; Rise       ; clock           ;
+;  instruction[0]  ; clock      ; 7.189 ; 7.189 ; Rise       ; clock           ;
+;  instruction[1]  ; clock      ; 5.039 ; 5.039 ; Rise       ; clock           ;
+;  instruction[2]  ; clock      ; 7.596 ; 7.596 ; Rise       ; clock           ;
+;  instruction[3]  ; clock      ; 7.327 ; 7.327 ; Rise       ; clock           ;
+;  instruction[4]  ; clock      ; 7.050 ; 7.050 ; Rise       ; clock           ;
+;  instruction[5]  ; clock      ; 4.861 ; 4.861 ; Rise       ; clock           ;
+;  instruction[26] ; clock      ; 6.793 ; 6.793 ; Rise       ; clock           ;
+;  instruction[27] ; clock      ; 6.827 ; 6.827 ; Rise       ; clock           ;
+;  instruction[28] ; clock      ; 6.604 ; 6.604 ; Rise       ; clock           ;
+;  instruction[29] ; clock      ; 5.365 ; 5.365 ; Rise       ; clock           ;
+;  instruction[30] ; clock      ; 3.658 ; 3.658 ; Rise       ; clock           ;
+;  instruction[31] ; clock      ; 6.754 ; 6.754 ; Rise       ; clock           ;
++------------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Hold Times                                                                     ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; instruction[*]   ; clock      ; -1.175 ; -1.175 ; Rise       ; clock           ;
+;  instruction[0]  ; clock      ; -6.115 ; -6.115 ; Rise       ; clock           ;
+;  instruction[1]  ; clock      ; -3.887 ; -3.887 ; Rise       ; clock           ;
+;  instruction[2]  ; clock      ; -6.522 ; -6.522 ; Rise       ; clock           ;
+;  instruction[3]  ; clock      ; -6.253 ; -6.253 ; Rise       ; clock           ;
+;  instruction[4]  ; clock      ; -5.976 ; -5.976 ; Rise       ; clock           ;
+;  instruction[5]  ; clock      ; -3.755 ; -3.755 ; Rise       ; clock           ;
+;  instruction[26] ; clock      ; -3.442 ; -3.442 ; Rise       ; clock           ;
+;  instruction[27] ; clock      ; -3.925 ; -3.925 ; Rise       ; clock           ;
+;  instruction[28] ; clock      ; -3.842 ; -3.842 ; Rise       ; clock           ;
+;  instruction[29] ; clock      ; -3.654 ; -3.654 ; Rise       ; clock           ;
+;  instruction[30] ; clock      ; -1.175 ; -1.175 ; Rise       ; clock           ;
+;  instruction[31] ; clock      ; -3.932 ; -3.932 ; Rise       ; clock           ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                  ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; Data Port                  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; alu_operation[*]           ; clock      ; 7.169 ; 7.169 ; Rise       ; clock           ;
+;  alu_operation[0]          ; clock      ; 7.169 ; 7.169 ; Rise       ; clock           ;
+;  alu_operation[1]          ; clock      ; 6.860 ; 6.860 ; Rise       ; clock           ;
+;  alu_operation[2]          ; clock      ; 6.881 ; 6.881 ; Rise       ; clock           ;
+; branch                     ; clock      ; 7.160 ; 7.160 ; Rise       ; clock           ;
+; branch2                    ; clock      ; 7.156 ; 7.156 ; Rise       ; clock           ;
+; enable_alu_output_register ; clock      ; 7.136 ; 7.136 ; Rise       ; clock           ;
+; enable_program_counter     ; clock      ; 6.870 ; 6.870 ; Rise       ; clock           ;
+; jump_control               ; clock      ; 7.158 ; 7.158 ; Rise       ; clock           ;
+; mem_to_register            ; clock      ; 6.883 ; 6.883 ; Rise       ; clock           ;
+; read_memory                ; clock      ; 7.139 ; 7.139 ; Rise       ; clock           ;
+; reg_dst                    ; clock      ; 6.883 ; 6.883 ; Rise       ; clock           ;
+; source_alu                 ; clock      ; 7.136 ; 7.136 ; Rise       ; clock           ;
+; write_memory               ; clock      ; 6.876 ; 6.876 ; Rise       ; clock           ;
+; write_register             ; clock      ; 6.873 ; 6.873 ; Rise       ; clock           ;
++----------------------------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                          ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; Data Port                  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; alu_operation[*]           ; clock      ; 6.860 ; 6.860 ; Rise       ; clock           ;
+;  alu_operation[0]          ; clock      ; 7.169 ; 7.169 ; Rise       ; clock           ;
+;  alu_operation[1]          ; clock      ; 6.860 ; 6.860 ; Rise       ; clock           ;
+;  alu_operation[2]          ; clock      ; 6.881 ; 6.881 ; Rise       ; clock           ;
+; branch                     ; clock      ; 7.160 ; 7.160 ; Rise       ; clock           ;
+; branch2                    ; clock      ; 7.156 ; 7.156 ; Rise       ; clock           ;
+; enable_alu_output_register ; clock      ; 7.136 ; 7.136 ; Rise       ; clock           ;
+; enable_program_counter     ; clock      ; 6.870 ; 6.870 ; Rise       ; clock           ;
+; jump_control               ; clock      ; 7.158 ; 7.158 ; Rise       ; clock           ;
+; mem_to_register            ; clock      ; 6.883 ; 6.883 ; Rise       ; clock           ;
+; read_memory                ; clock      ; 7.139 ; 7.139 ; Rise       ; clock           ;
+; reg_dst                    ; clock      ; 6.883 ; 6.883 ; Rise       ; clock           ;
+; source_alu                 ; clock      ; 7.136 ; 7.136 ; Rise       ; clock           ;
+; write_memory               ; clock      ; 6.876 ; 6.876 ; Rise       ; clock           ;
+; write_register             ; clock      ; 6.873 ; 6.873 ; Rise       ; clock           ;
++----------------------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------+
+; Propagation Delay                                             ;
++-----------------+-----------------+--------+----+----+--------+
+; Input Port      ; Output Port     ; RR     ; RF ; FR ; FF     ;
++-----------------+-----------------+--------+----+----+--------+
+; instruction[0]  ; jump_offset[0]  ; 9.575  ;    ;    ; 9.575  ;
+; instruction[0]  ; offset[0]       ; 9.575  ;    ;    ; 9.575  ;
+; instruction[1]  ; jump_offset[1]  ; 9.578  ;    ;    ; 9.578  ;
+; instruction[1]  ; offset[1]       ; 9.588  ;    ;    ; 9.588  ;
+; instruction[2]  ; jump_offset[2]  ; 9.646  ;    ;    ; 9.646  ;
+; instruction[2]  ; offset[2]       ; 9.636  ;    ;    ; 9.636  ;
+; instruction[3]  ; jump_offset[3]  ; 9.593  ;    ;    ; 9.593  ;
+; instruction[3]  ; offset[3]       ; 9.593  ;    ;    ; 9.593  ;
+; instruction[4]  ; jump_offset[4]  ; 9.470  ;    ;    ; 9.470  ;
+; instruction[4]  ; offset[4]       ; 9.533  ;    ;    ; 9.533  ;
+; instruction[5]  ; jump_offset[5]  ; 9.504  ;    ;    ; 9.504  ;
+; instruction[5]  ; offset[5]       ; 9.504  ;    ;    ; 9.504  ;
+; instruction[6]  ; jump_offset[6]  ; 8.544  ;    ;    ; 8.544  ;
+; instruction[6]  ; offset[6]       ; 8.544  ;    ;    ; 8.544  ;
+; instruction[7]  ; jump_offset[7]  ; 9.596  ;    ;    ; 9.596  ;
+; instruction[7]  ; offset[7]       ; 9.640  ;    ;    ; 9.640  ;
+; instruction[8]  ; jump_offset[8]  ; 8.514  ;    ;    ; 8.514  ;
+; instruction[8]  ; offset[8]       ; 8.544  ;    ;    ; 8.544  ;
+; instruction[9]  ; jump_offset[9]  ; 8.763  ;    ;    ; 8.763  ;
+; instruction[9]  ; offset[9]       ; 8.753  ;    ;    ; 8.753  ;
+; instruction[10] ; jump_offset[10] ; 8.689  ;    ;    ; 8.689  ;
+; instruction[10] ; offset[10]      ; 8.524  ;    ;    ; 8.524  ;
+; instruction[11] ; jump_offset[11] ; 9.491  ;    ;    ; 9.491  ;
+; instruction[11] ; offset[11]      ; 9.469  ;    ;    ; 9.469  ;
+; instruction[11] ; register3[0]    ; 9.469  ;    ;    ; 9.469  ;
+; instruction[12] ; jump_offset[12] ; 8.514  ;    ;    ; 8.514  ;
+; instruction[12] ; offset[12]      ; 8.484  ;    ;    ; 8.484  ;
+; instruction[12] ; register3[1]    ; 8.514  ;    ;    ; 8.514  ;
+; instruction[13] ; jump_offset[13] ; 8.744  ;    ;    ; 8.744  ;
+; instruction[13] ; offset[13]      ; 8.764  ;    ;    ; 8.764  ;
+; instruction[13] ; register3[2]    ; 8.744  ;    ;    ; 8.744  ;
+; instruction[14] ; jump_offset[14] ; 9.502  ;    ;    ; 9.502  ;
+; instruction[14] ; offset[14]      ; 9.502  ;    ;    ; 9.502  ;
+; instruction[14] ; register3[3]    ; 9.307  ;    ;    ; 9.307  ;
+; instruction[15] ; jump_offset[15] ; 9.938  ;    ;    ; 9.938  ;
+; instruction[15] ; offset[15]      ; 9.914  ;    ;    ; 9.914  ;
+; instruction[15] ; offset[16]      ; 9.928  ;    ;    ; 9.928  ;
+; instruction[15] ; offset[17]      ; 10.436 ;    ;    ; 10.436 ;
+; instruction[15] ; offset[18]      ; 9.914  ;    ;    ; 9.914  ;
+; instruction[15] ; offset[19]      ; 9.926  ;    ;    ; 9.926  ;
+; instruction[15] ; offset[20]      ; 10.446 ;    ;    ; 10.446 ;
+; instruction[15] ; offset[21]      ; 10.456 ;    ;    ; 10.456 ;
+; instruction[15] ; offset[22]      ; 10.206 ;    ;    ; 10.206 ;
+; instruction[15] ; offset[23]      ; 9.908  ;    ;    ; 9.908  ;
+; instruction[15] ; offset[24]      ; 10.186 ;    ;    ; 10.186 ;
+; instruction[15] ; offset[25]      ; 9.904  ;    ;    ; 9.904  ;
+; instruction[15] ; offset[26]      ; 9.906  ;    ;    ; 9.906  ;
+; instruction[15] ; offset[27]      ; 10.196 ;    ;    ; 10.196 ;
+; instruction[15] ; offset[28]      ; 9.896  ;    ;    ; 9.896  ;
+; instruction[15] ; offset[29]      ; 9.916  ;    ;    ; 9.916  ;
+; instruction[15] ; offset[30]      ; 9.906  ;    ;    ; 9.906  ;
+; instruction[15] ; offset[31]      ; 9.896  ;    ;    ; 9.896  ;
+; instruction[15] ; register3[4]    ; 9.908  ;    ;    ; 9.908  ;
+; instruction[16] ; jump_offset[16] ; 9.572  ;    ;    ; 9.572  ;
+; instruction[16] ; register2[0]    ; 9.572  ;    ;    ; 9.572  ;
+; instruction[17] ; jump_offset[17] ; 9.349  ;    ;    ; 9.349  ;
+; instruction[17] ; register2[1]    ; 9.349  ;    ;    ; 9.349  ;
+; instruction[18] ; jump_offset[18] ; 9.604  ;    ;    ; 9.604  ;
+; instruction[18] ; register2[2]    ; 9.604  ;    ;    ; 9.604  ;
+; instruction[19] ; jump_offset[19] ; 9.630  ;    ;    ; 9.630  ;
+; instruction[19] ; register2[3]    ; 9.600  ;    ;    ; 9.600  ;
+; instruction[20] ; jump_offset[20] ; 9.555  ;    ;    ; 9.555  ;
+; instruction[20] ; register2[4]    ; 9.604  ;    ;    ; 9.604  ;
+; instruction[21] ; jump_offset[21] ; 8.514  ;    ;    ; 8.514  ;
+; instruction[21] ; register1[0]    ; 8.514  ;    ;    ; 8.514  ;
+; instruction[22] ; jump_offset[22] ; 8.473  ;    ;    ; 8.473  ;
+; instruction[22] ; register1[1]    ; 8.473  ;    ;    ; 8.473  ;
+; instruction[23] ; jump_offset[23] ; 8.544  ;    ;    ; 8.544  ;
+; instruction[23] ; register1[2]    ; 8.544  ;    ;    ; 8.544  ;
+; instruction[24] ; jump_offset[24] ; 8.489  ;    ;    ; 8.489  ;
+; instruction[24] ; register1[3]    ; 8.459  ;    ;    ; 8.459  ;
+; instruction[25] ; jump_offset[25] ; 9.513  ;    ;    ; 9.513  ;
+; instruction[25] ; register1[4]    ; 9.503  ;    ;    ; 9.503  ;
++-----------------+-----------------+--------+----+----+--------+
+
+
++---------------------------------------------------------------+
+; Minimum Propagation Delay                                     ;
++-----------------+-----------------+--------+----+----+--------+
+; Input Port      ; Output Port     ; RR     ; RF ; FR ; FF     ;
++-----------------+-----------------+--------+----+----+--------+
+; instruction[0]  ; jump_offset[0]  ; 9.575  ;    ;    ; 9.575  ;
+; instruction[0]  ; offset[0]       ; 9.575  ;    ;    ; 9.575  ;
+; instruction[1]  ; jump_offset[1]  ; 9.578  ;    ;    ; 9.578  ;
+; instruction[1]  ; offset[1]       ; 9.588  ;    ;    ; 9.588  ;
+; instruction[2]  ; jump_offset[2]  ; 9.646  ;    ;    ; 9.646  ;
+; instruction[2]  ; offset[2]       ; 9.636  ;    ;    ; 9.636  ;
+; instruction[3]  ; jump_offset[3]  ; 9.593  ;    ;    ; 9.593  ;
+; instruction[3]  ; offset[3]       ; 9.593  ;    ;    ; 9.593  ;
+; instruction[4]  ; jump_offset[4]  ; 9.470  ;    ;    ; 9.470  ;
+; instruction[4]  ; offset[4]       ; 9.533  ;    ;    ; 9.533  ;
+; instruction[5]  ; jump_offset[5]  ; 9.504  ;    ;    ; 9.504  ;
+; instruction[5]  ; offset[5]       ; 9.504  ;    ;    ; 9.504  ;
+; instruction[6]  ; jump_offset[6]  ; 8.544  ;    ;    ; 8.544  ;
+; instruction[6]  ; offset[6]       ; 8.544  ;    ;    ; 8.544  ;
+; instruction[7]  ; jump_offset[7]  ; 9.596  ;    ;    ; 9.596  ;
+; instruction[7]  ; offset[7]       ; 9.640  ;    ;    ; 9.640  ;
+; instruction[8]  ; jump_offset[8]  ; 8.514  ;    ;    ; 8.514  ;
+; instruction[8]  ; offset[8]       ; 8.544  ;    ;    ; 8.544  ;
+; instruction[9]  ; jump_offset[9]  ; 8.763  ;    ;    ; 8.763  ;
+; instruction[9]  ; offset[9]       ; 8.753  ;    ;    ; 8.753  ;
+; instruction[10] ; jump_offset[10] ; 8.689  ;    ;    ; 8.689  ;
+; instruction[10] ; offset[10]      ; 8.524  ;    ;    ; 8.524  ;
+; instruction[11] ; jump_offset[11] ; 9.491  ;    ;    ; 9.491  ;
+; instruction[11] ; offset[11]      ; 9.469  ;    ;    ; 9.469  ;
+; instruction[11] ; register3[0]    ; 9.469  ;    ;    ; 9.469  ;
+; instruction[12] ; jump_offset[12] ; 8.514  ;    ;    ; 8.514  ;
+; instruction[12] ; offset[12]      ; 8.484  ;    ;    ; 8.484  ;
+; instruction[12] ; register3[1]    ; 8.514  ;    ;    ; 8.514  ;
+; instruction[13] ; jump_offset[13] ; 8.744  ;    ;    ; 8.744  ;
+; instruction[13] ; offset[13]      ; 8.764  ;    ;    ; 8.764  ;
+; instruction[13] ; register3[2]    ; 8.744  ;    ;    ; 8.744  ;
+; instruction[14] ; jump_offset[14] ; 9.502  ;    ;    ; 9.502  ;
+; instruction[14] ; offset[14]      ; 9.502  ;    ;    ; 9.502  ;
+; instruction[14] ; register3[3]    ; 9.307  ;    ;    ; 9.307  ;
+; instruction[15] ; jump_offset[15] ; 9.938  ;    ;    ; 9.938  ;
+; instruction[15] ; offset[15]      ; 9.914  ;    ;    ; 9.914  ;
+; instruction[15] ; offset[16]      ; 9.928  ;    ;    ; 9.928  ;
+; instruction[15] ; offset[17]      ; 10.436 ;    ;    ; 10.436 ;
+; instruction[15] ; offset[18]      ; 9.914  ;    ;    ; 9.914  ;
+; instruction[15] ; offset[19]      ; 9.926  ;    ;    ; 9.926  ;
+; instruction[15] ; offset[20]      ; 10.446 ;    ;    ; 10.446 ;
+; instruction[15] ; offset[21]      ; 10.456 ;    ;    ; 10.456 ;
+; instruction[15] ; offset[22]      ; 10.206 ;    ;    ; 10.206 ;
+; instruction[15] ; offset[23]      ; 9.908  ;    ;    ; 9.908  ;
+; instruction[15] ; offset[24]      ; 10.186 ;    ;    ; 10.186 ;
+; instruction[15] ; offset[25]      ; 9.904  ;    ;    ; 9.904  ;
+; instruction[15] ; offset[26]      ; 9.906  ;    ;    ; 9.906  ;
+; instruction[15] ; offset[27]      ; 10.196 ;    ;    ; 10.196 ;
+; instruction[15] ; offset[28]      ; 9.896  ;    ;    ; 9.896  ;
+; instruction[15] ; offset[29]      ; 9.916  ;    ;    ; 9.916  ;
+; instruction[15] ; offset[30]      ; 9.906  ;    ;    ; 9.906  ;
+; instruction[15] ; offset[31]      ; 9.896  ;    ;    ; 9.896  ;
+; instruction[15] ; register3[4]    ; 9.908  ;    ;    ; 9.908  ;
+; instruction[16] ; jump_offset[16] ; 9.572  ;    ;    ; 9.572  ;
+; instruction[16] ; register2[0]    ; 9.572  ;    ;    ; 9.572  ;
+; instruction[17] ; jump_offset[17] ; 9.349  ;    ;    ; 9.349  ;
+; instruction[17] ; register2[1]    ; 9.349  ;    ;    ; 9.349  ;
+; instruction[18] ; jump_offset[18] ; 9.604  ;    ;    ; 9.604  ;
+; instruction[18] ; register2[2]    ; 9.604  ;    ;    ; 9.604  ;
+; instruction[19] ; jump_offset[19] ; 9.630  ;    ;    ; 9.630  ;
+; instruction[19] ; register2[3]    ; 9.600  ;    ;    ; 9.600  ;
+; instruction[20] ; jump_offset[20] ; 9.555  ;    ;    ; 9.555  ;
+; instruction[20] ; register2[4]    ; 9.604  ;    ;    ; 9.604  ;
+; instruction[21] ; jump_offset[21] ; 8.514  ;    ;    ; 8.514  ;
+; instruction[21] ; register1[0]    ; 8.514  ;    ;    ; 8.514  ;
+; instruction[22] ; jump_offset[22] ; 8.473  ;    ;    ; 8.473  ;
+; instruction[22] ; register1[1]    ; 8.473  ;    ;    ; 8.473  ;
+; instruction[23] ; jump_offset[23] ; 8.544  ;    ;    ; 8.544  ;
+; instruction[23] ; register1[2]    ; 8.544  ;    ;    ; 8.544  ;
+; instruction[24] ; jump_offset[24] ; 8.489  ;    ;    ; 8.489  ;
+; instruction[24] ; register1[3]    ; 8.459  ;    ;    ; 8.459  ;
+; instruction[25] ; jump_offset[25] ; 9.513  ;    ;    ; 9.513  ;
+; instruction[25] ; register1[4]    ; 9.503  ;    ;    ; 9.503  ;
++-----------------+-----------------+--------+----+----+--------+
+
+
++-------------------------------+
+; Fast Model Setup Summary      ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clock ; 0.378 ; 0.000         ;
++-------+-------+---------------+
+
+
++-------------------------------+
+; Fast Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clock ; 0.249 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clock ; -1.380 ; -20.380               ;
++-------+--------+-----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'clock'                                                                                                            ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node            ; To Node                         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.378 ; next_state.alu       ; next_state.alu                  ; clock        ; clock       ; 1.000        ; 0.000      ; 0.654      ;
+; 0.382 ; next_state.alu       ; next_state.fetch                ; clock        ; clock       ; 1.000        ; 0.000      ; 0.650      ;
+; 0.413 ; next_state.mem       ; next_state.fetch                ; clock        ; clock       ; 1.000        ; 0.000      ; 0.619      ;
+; 0.448 ; next_state.writeback ; reg_dst~reg0                    ; clock        ; clock       ; 1.000        ; 0.000      ; 0.584      ;
+; 0.448 ; next_state.alu       ; branch2~reg0                    ; clock        ; clock       ; 1.000        ; -0.001     ; 0.583      ;
+; 0.449 ; next_state.alu       ; jump_control~reg0               ; clock        ; clock       ; 1.000        ; -0.001     ; 0.582      ;
+; 0.449 ; next_state.alu       ; branch~reg0                     ; clock        ; clock       ; 1.000        ; -0.001     ; 0.582      ;
+; 0.460 ; next_state.mem       ; next_state.writeback            ; clock        ; clock       ; 1.000        ; 0.000      ; 0.572      ;
+; 0.464 ; next_state.alu       ; enable_alu_output_register~reg0 ; clock        ; clock       ; 1.000        ; -0.001     ; 0.567      ;
+; 0.485 ; next_state.writeback ; write_register~reg0             ; clock        ; clock       ; 1.000        ; 0.001      ; 0.548      ;
+; 0.506 ; next_state.writeback ; next_state.fetch                ; clock        ; clock       ; 1.000        ; 0.000      ; 0.526      ;
+; 0.540 ; next_state.fetch     ; enable_program_counter~reg0     ; clock        ; clock       ; 1.000        ; 0.001      ; 0.493      ;
+; 0.545 ; next_state.alu       ; next_state.mem                  ; clock        ; clock       ; 1.000        ; 0.000      ; 0.487      ;
+; 0.548 ; next_state.alu       ; source_alu~reg0                 ; clock        ; clock       ; 1.000        ; 0.000      ; 0.484      ;
+; 0.570 ; next_state.alu       ; next_state.writeback            ; clock        ; clock       ; 1.000        ; 0.000      ; 0.462      ;
+; 0.584 ; next_state.decode    ; next_state.alu                  ; clock        ; clock       ; 1.000        ; 0.000      ; 0.448      ;
+; 0.614 ; next_state.fetch     ; next_state.decode               ; clock        ; clock       ; 1.000        ; 0.000      ; 0.418      ;
+; 0.628 ; next_state.writeback ; mem_to_register~reg0            ; clock        ; clock       ; 1.000        ; 0.000      ; 0.404      ;
+; 0.631 ; next_state.mem       ; read_memory~reg0                ; clock        ; clock       ; 1.000        ; 0.000      ; 0.401      ;
+; 0.631 ; next_state.mem       ; write_memory~reg0               ; clock        ; clock       ; 1.000        ; 0.000      ; 0.401      ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'clock'                                                                                                             ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node            ; To Node                         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.249 ; next_state.mem       ; read_memory~reg0                ; clock        ; clock       ; 0.000        ; 0.000      ; 0.401      ;
+; 0.249 ; next_state.mem       ; write_memory~reg0               ; clock        ; clock       ; 0.000        ; 0.000      ; 0.401      ;
+; 0.252 ; next_state.writeback ; mem_to_register~reg0            ; clock        ; clock       ; 0.000        ; 0.000      ; 0.404      ;
+; 0.266 ; next_state.fetch     ; next_state.decode               ; clock        ; clock       ; 0.000        ; 0.000      ; 0.418      ;
+; 0.296 ; next_state.decode    ; next_state.alu                  ; clock        ; clock       ; 0.000        ; 0.000      ; 0.448      ;
+; 0.310 ; next_state.alu       ; next_state.writeback            ; clock        ; clock       ; 0.000        ; 0.000      ; 0.462      ;
+; 0.332 ; next_state.alu       ; source_alu~reg0                 ; clock        ; clock       ; 0.000        ; 0.000      ; 0.484      ;
+; 0.335 ; next_state.alu       ; next_state.mem                  ; clock        ; clock       ; 0.000        ; 0.000      ; 0.487      ;
+; 0.340 ; next_state.fetch     ; enable_program_counter~reg0     ; clock        ; clock       ; 0.000        ; 0.001      ; 0.493      ;
+; 0.374 ; next_state.writeback ; next_state.fetch                ; clock        ; clock       ; 0.000        ; 0.000      ; 0.526      ;
+; 0.395 ; next_state.writeback ; write_register~reg0             ; clock        ; clock       ; 0.000        ; 0.001      ; 0.548      ;
+; 0.416 ; next_state.alu       ; enable_alu_output_register~reg0 ; clock        ; clock       ; 0.000        ; -0.001     ; 0.567      ;
+; 0.420 ; next_state.mem       ; next_state.writeback            ; clock        ; clock       ; 0.000        ; 0.000      ; 0.572      ;
+; 0.431 ; next_state.alu       ; jump_control~reg0               ; clock        ; clock       ; 0.000        ; -0.001     ; 0.582      ;
+; 0.431 ; next_state.alu       ; branch~reg0                     ; clock        ; clock       ; 0.000        ; -0.001     ; 0.582      ;
+; 0.432 ; next_state.writeback ; reg_dst~reg0                    ; clock        ; clock       ; 0.000        ; 0.000      ; 0.584      ;
+; 0.432 ; next_state.alu       ; branch2~reg0                    ; clock        ; clock       ; 0.000        ; -0.001     ; 0.583      ;
+; 0.467 ; next_state.mem       ; next_state.fetch                ; clock        ; clock       ; 0.000        ; 0.000      ; 0.619      ;
+; 0.498 ; next_state.alu       ; next_state.fetch                ; clock        ; clock       ; 0.000        ; 0.000      ; 0.650      ;
+; 0.502 ; next_state.alu       ; next_state.alu                  ; clock        ; clock       ; 0.000        ; 0.000      ; 0.654      ;
++-------+----------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'clock'                                                                              ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                              ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; clock ; Rise       ; clock                               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[0]~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[0]~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[1]~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[1]~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[2]~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[2]~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; branch2~reg0                        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; branch2~reg0                        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; branch~reg0                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; branch~reg0                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; enable_alu_output_register~reg0     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; enable_alu_output_register~reg0     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; enable_program_counter~reg0         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; enable_program_counter~reg0         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; jump_control~reg0                   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; jump_control~reg0                   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; mem_to_register~reg0                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; mem_to_register~reg0                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; next_state.alu                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.alu                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; next_state.decode                   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.decode                   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; next_state.fetch                    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.fetch                    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; next_state.mem                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.mem                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; next_state.writeback                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.writeback                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; read_memory~reg0                    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; read_memory~reg0                    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; reg_dst~reg0                        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; reg_dst~reg0                        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; source_alu~reg0                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; source_alu~reg0                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; write_memory~reg0                   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; write_memory~reg0                   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clock ; Rise       ; write_register~reg0                 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clock ; Rise       ; write_register~reg0                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[0]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[0]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[1]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[1]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; alu_operation[2]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; alu_operation[2]~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; branch2~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; branch2~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; branch~reg0|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; branch~reg0|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; clock|combout                       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; clock|combout                       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; clock~clkctrl|inclk[0]              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; clock~clkctrl|inclk[0]              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; clock~clkctrl|outclk                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; clock~clkctrl|outclk                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; enable_alu_output_register~reg0|clk ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; enable_alu_output_register~reg0|clk ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; enable_program_counter~reg0|clk     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; enable_program_counter~reg0|clk     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; jump_control~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; jump_control~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; mem_to_register~reg0|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; mem_to_register~reg0|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.alu|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.alu|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.decode|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.decode|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.fetch|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.fetch|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.mem|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.mem|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; next_state.writeback|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; next_state.writeback|clk            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; read_memory~reg0|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; read_memory~reg0|clk                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; reg_dst~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; reg_dst~reg0|clk                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; source_alu~reg0|clk                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; source_alu~reg0|clk                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; write_memory~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; write_memory~reg0|clk               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clock ; Rise       ; write_register~reg0|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clock ; Rise       ; write_register~reg0|clk             ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++------------------+------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+------------+-------+-------+------------+-----------------+
+; instruction[*]   ; clock      ; 3.225 ; 3.225 ; Rise       ; clock           ;
+;  instruction[0]  ; clock      ; 3.055 ; 3.055 ; Rise       ; clock           ;
+;  instruction[1]  ; clock      ; 2.150 ; 2.150 ; Rise       ; clock           ;
+;  instruction[2]  ; clock      ; 3.225 ; 3.225 ; Rise       ; clock           ;
+;  instruction[3]  ; clock      ; 3.127 ; 3.127 ; Rise       ; clock           ;
+;  instruction[4]  ; clock      ; 2.975 ; 2.975 ; Rise       ; clock           ;
+;  instruction[5]  ; clock      ; 2.047 ; 2.047 ; Rise       ; clock           ;
+;  instruction[26] ; clock      ; 2.806 ; 2.806 ; Rise       ; clock           ;
+;  instruction[27] ; clock      ; 2.853 ; 2.853 ; Rise       ; clock           ;
+;  instruction[28] ; clock      ; 2.763 ; 2.763 ; Rise       ; clock           ;
+;  instruction[29] ; clock      ; 2.252 ; 2.252 ; Rise       ; clock           ;
+;  instruction[30] ; clock      ; 0.954 ; 0.954 ; Rise       ; clock           ;
+;  instruction[31] ; clock      ; 2.787 ; 2.787 ; Rise       ; clock           ;
++------------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Hold Times                                                                     ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; instruction[*]   ; clock      ; -0.012 ; -0.012 ; Rise       ; clock           ;
+;  instruction[0]  ; clock      ; -2.629 ; -2.629 ; Rise       ; clock           ;
+;  instruction[1]  ; clock      ; -1.733 ; -1.733 ; Rise       ; clock           ;
+;  instruction[2]  ; clock      ; -2.799 ; -2.799 ; Rise       ; clock           ;
+;  instruction[3]  ; clock      ; -2.701 ; -2.701 ; Rise       ; clock           ;
+;  instruction[4]  ; clock      ; -2.549 ; -2.549 ; Rise       ; clock           ;
+;  instruction[5]  ; clock      ; -1.633 ; -1.633 ; Rise       ; clock           ;
+;  instruction[26] ; clock      ; -1.534 ; -1.534 ; Rise       ; clock           ;
+;  instruction[27] ; clock      ; -1.732 ; -1.732 ; Rise       ; clock           ;
+;  instruction[28] ; clock      ; -1.683 ; -1.683 ; Rise       ; clock           ;
+;  instruction[29] ; clock      ; -1.596 ; -1.596 ; Rise       ; clock           ;
+;  instruction[30] ; clock      ; -0.012 ; -0.012 ; Rise       ; clock           ;
+;  instruction[31] ; clock      ; -1.699 ; -1.699 ; Rise       ; clock           ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                  ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; Data Port                  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; alu_operation[*]           ; clock      ; 3.884 ; 3.884 ; Rise       ; clock           ;
+;  alu_operation[0]          ; clock      ; 3.884 ; 3.884 ; Rise       ; clock           ;
+;  alu_operation[1]          ; clock      ; 3.745 ; 3.745 ; Rise       ; clock           ;
+;  alu_operation[2]          ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; branch                     ; clock      ; 3.875 ; 3.875 ; Rise       ; clock           ;
+; branch2                    ; clock      ; 3.871 ; 3.871 ; Rise       ; clock           ;
+; enable_alu_output_register ; clock      ; 3.851 ; 3.851 ; Rise       ; clock           ;
+; enable_program_counter     ; clock      ; 3.756 ; 3.756 ; Rise       ; clock           ;
+; jump_control               ; clock      ; 3.873 ; 3.873 ; Rise       ; clock           ;
+; mem_to_register            ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; read_memory                ; clock      ; 3.850 ; 3.850 ; Rise       ; clock           ;
+; reg_dst                    ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; source_alu                 ; clock      ; 3.852 ; 3.852 ; Rise       ; clock           ;
+; write_memory               ; clock      ; 3.759 ; 3.759 ; Rise       ; clock           ;
+; write_register             ; clock      ; 3.758 ; 3.758 ; Rise       ; clock           ;
++----------------------------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                          ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; Data Port                  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; alu_operation[*]           ; clock      ; 3.745 ; 3.745 ; Rise       ; clock           ;
+;  alu_operation[0]          ; clock      ; 3.884 ; 3.884 ; Rise       ; clock           ;
+;  alu_operation[1]          ; clock      ; 3.745 ; 3.745 ; Rise       ; clock           ;
+;  alu_operation[2]          ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; branch                     ; clock      ; 3.875 ; 3.875 ; Rise       ; clock           ;
+; branch2                    ; clock      ; 3.871 ; 3.871 ; Rise       ; clock           ;
+; enable_alu_output_register ; clock      ; 3.851 ; 3.851 ; Rise       ; clock           ;
+; enable_program_counter     ; clock      ; 3.756 ; 3.756 ; Rise       ; clock           ;
+; jump_control               ; clock      ; 3.873 ; 3.873 ; Rise       ; clock           ;
+; mem_to_register            ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; read_memory                ; clock      ; 3.850 ; 3.850 ; Rise       ; clock           ;
+; reg_dst                    ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; source_alu                 ; clock      ; 3.852 ; 3.852 ; Rise       ; clock           ;
+; write_memory               ; clock      ; 3.759 ; 3.759 ; Rise       ; clock           ;
+; write_register             ; clock      ; 3.758 ; 3.758 ; Rise       ; clock           ;
++----------------------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------+
+; Propagation Delay                                           ;
++-----------------+-----------------+-------+----+----+-------+
+; Input Port      ; Output Port     ; RR    ; RF ; FR ; FF    ;
++-----------------+-----------------+-------+----+----+-------+
+; instruction[0]  ; jump_offset[0]  ; 5.023 ;    ;    ; 5.023 ;
+; instruction[0]  ; offset[0]       ; 5.023 ;    ;    ; 5.023 ;
+; instruction[1]  ; jump_offset[1]  ; 5.045 ;    ;    ; 5.045 ;
+; instruction[1]  ; offset[1]       ; 5.055 ;    ;    ; 5.055 ;
+; instruction[2]  ; jump_offset[2]  ; 5.085 ;    ;    ; 5.085 ;
+; instruction[2]  ; offset[2]       ; 5.075 ;    ;    ; 5.075 ;
+; instruction[3]  ; jump_offset[3]  ; 5.042 ;    ;    ; 5.042 ;
+; instruction[3]  ; offset[3]       ; 5.042 ;    ;    ; 5.042 ;
+; instruction[4]  ; jump_offset[4]  ; 4.942 ;    ;    ; 4.942 ;
+; instruction[4]  ; offset[4]       ; 4.993 ;    ;    ; 4.993 ;
+; instruction[5]  ; jump_offset[5]  ; 4.974 ;    ;    ; 4.974 ;
+; instruction[5]  ; offset[5]       ; 4.974 ;    ;    ; 4.974 ;
+; instruction[6]  ; jump_offset[6]  ; 4.606 ;    ;    ; 4.606 ;
+; instruction[6]  ; offset[6]       ; 4.606 ;    ;    ; 4.606 ;
+; instruction[7]  ; jump_offset[7]  ; 5.046 ;    ;    ; 5.046 ;
+; instruction[7]  ; offset[7]       ; 5.079 ;    ;    ; 5.079 ;
+; instruction[8]  ; jump_offset[8]  ; 4.576 ;    ;    ; 4.576 ;
+; instruction[8]  ; offset[8]       ; 4.606 ;    ;    ; 4.606 ;
+; instruction[9]  ; jump_offset[9]  ; 4.679 ;    ;    ; 4.679 ;
+; instruction[9]  ; offset[9]       ; 4.669 ;    ;    ; 4.669 ;
+; instruction[10] ; jump_offset[10] ; 4.706 ;    ;    ; 4.706 ;
+; instruction[10] ; offset[10]      ; 4.586 ;    ;    ; 4.586 ;
+; instruction[11] ; jump_offset[11] ; 4.964 ;    ;    ; 4.964 ;
+; instruction[11] ; offset[11]      ; 4.942 ;    ;    ; 4.942 ;
+; instruction[11] ; register3[0]    ; 4.942 ;    ;    ; 4.942 ;
+; instruction[12] ; jump_offset[12] ; 4.576 ;    ;    ; 4.576 ;
+; instruction[12] ; offset[12]      ; 4.546 ;    ;    ; 4.546 ;
+; instruction[12] ; register3[1]    ; 4.576 ;    ;    ; 4.576 ;
+; instruction[13] ; jump_offset[13] ; 4.660 ;    ;    ; 4.660 ;
+; instruction[13] ; offset[13]      ; 4.680 ;    ;    ; 4.680 ;
+; instruction[13] ; register3[2]    ; 4.660 ;    ;    ; 4.660 ;
+; instruction[14] ; jump_offset[14] ; 4.971 ;    ;    ; 4.971 ;
+; instruction[14] ; offset[14]      ; 4.971 ;    ;    ; 4.971 ;
+; instruction[14] ; register3[3]    ; 4.924 ;    ;    ; 4.924 ;
+; instruction[15] ; jump_offset[15] ; 5.246 ;    ;    ; 5.246 ;
+; instruction[15] ; offset[15]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[16]      ; 5.236 ;    ;    ; 5.236 ;
+; instruction[15] ; offset[17]      ; 5.392 ;    ;    ; 5.392 ;
+; instruction[15] ; offset[18]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[19]      ; 5.232 ;    ;    ; 5.232 ;
+; instruction[15] ; offset[20]      ; 5.402 ;    ;    ; 5.402 ;
+; instruction[15] ; offset[21]      ; 5.412 ;    ;    ; 5.412 ;
+; instruction[15] ; offset[22]      ; 5.335 ;    ;    ; 5.335 ;
+; instruction[15] ; offset[23]      ; 5.216 ;    ;    ; 5.216 ;
+; instruction[15] ; offset[24]      ; 5.315 ;    ;    ; 5.315 ;
+; instruction[15] ; offset[25]      ; 5.212 ;    ;    ; 5.212 ;
+; instruction[15] ; offset[26]      ; 5.214 ;    ;    ; 5.214 ;
+; instruction[15] ; offset[27]      ; 5.325 ;    ;    ; 5.325 ;
+; instruction[15] ; offset[28]      ; 5.202 ;    ;    ; 5.202 ;
+; instruction[15] ; offset[29]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[30]      ; 5.212 ;    ;    ; 5.212 ;
+; instruction[15] ; offset[31]      ; 5.204 ;    ;    ; 5.204 ;
+; instruction[15] ; register3[4]    ; 5.216 ;    ;    ; 5.216 ;
+; instruction[16] ; jump_offset[16] ; 5.016 ;    ;    ; 5.016 ;
+; instruction[16] ; register2[0]    ; 5.016 ;    ;    ; 5.016 ;
+; instruction[17] ; jump_offset[17] ; 4.969 ;    ;    ; 4.969 ;
+; instruction[17] ; register2[1]    ; 4.969 ;    ;    ; 4.969 ;
+; instruction[18] ; jump_offset[18] ; 5.043 ;    ;    ; 5.043 ;
+; instruction[18] ; register2[2]    ; 5.043 ;    ;    ; 5.043 ;
+; instruction[19] ; jump_offset[19] ; 5.072 ;    ;    ; 5.072 ;
+; instruction[19] ; register2[3]    ; 5.042 ;    ;    ; 5.042 ;
+; instruction[20] ; jump_offset[20] ; 5.017 ;    ;    ; 5.017 ;
+; instruction[20] ; register2[4]    ; 5.050 ;    ;    ; 5.050 ;
+; instruction[21] ; jump_offset[21] ; 4.576 ;    ;    ; 4.576 ;
+; instruction[21] ; register1[0]    ; 4.576 ;    ;    ; 4.576 ;
+; instruction[22] ; jump_offset[22] ; 4.552 ;    ;    ; 4.552 ;
+; instruction[22] ; register1[1]    ; 4.552 ;    ;    ; 4.552 ;
+; instruction[23] ; jump_offset[23] ; 4.606 ;    ;    ; 4.606 ;
+; instruction[23] ; register1[2]    ; 4.606 ;    ;    ; 4.606 ;
+; instruction[24] ; jump_offset[24] ; 4.560 ;    ;    ; 4.560 ;
+; instruction[24] ; register1[3]    ; 4.530 ;    ;    ; 4.530 ;
+; instruction[25] ; jump_offset[25] ; 4.977 ;    ;    ; 4.977 ;
+; instruction[25] ; register1[4]    ; 4.967 ;    ;    ; 4.967 ;
++-----------------+-----------------+-------+----+----+-------+
+
+
++-------------------------------------------------------------+
+; Minimum Propagation Delay                                   ;
++-----------------+-----------------+-------+----+----+-------+
+; Input Port      ; Output Port     ; RR    ; RF ; FR ; FF    ;
++-----------------+-----------------+-------+----+----+-------+
+; instruction[0]  ; jump_offset[0]  ; 5.023 ;    ;    ; 5.023 ;
+; instruction[0]  ; offset[0]       ; 5.023 ;    ;    ; 5.023 ;
+; instruction[1]  ; jump_offset[1]  ; 5.045 ;    ;    ; 5.045 ;
+; instruction[1]  ; offset[1]       ; 5.055 ;    ;    ; 5.055 ;
+; instruction[2]  ; jump_offset[2]  ; 5.085 ;    ;    ; 5.085 ;
+; instruction[2]  ; offset[2]       ; 5.075 ;    ;    ; 5.075 ;
+; instruction[3]  ; jump_offset[3]  ; 5.042 ;    ;    ; 5.042 ;
+; instruction[3]  ; offset[3]       ; 5.042 ;    ;    ; 5.042 ;
+; instruction[4]  ; jump_offset[4]  ; 4.942 ;    ;    ; 4.942 ;
+; instruction[4]  ; offset[4]       ; 4.993 ;    ;    ; 4.993 ;
+; instruction[5]  ; jump_offset[5]  ; 4.974 ;    ;    ; 4.974 ;
+; instruction[5]  ; offset[5]       ; 4.974 ;    ;    ; 4.974 ;
+; instruction[6]  ; jump_offset[6]  ; 4.606 ;    ;    ; 4.606 ;
+; instruction[6]  ; offset[6]       ; 4.606 ;    ;    ; 4.606 ;
+; instruction[7]  ; jump_offset[7]  ; 5.046 ;    ;    ; 5.046 ;
+; instruction[7]  ; offset[7]       ; 5.079 ;    ;    ; 5.079 ;
+; instruction[8]  ; jump_offset[8]  ; 4.576 ;    ;    ; 4.576 ;
+; instruction[8]  ; offset[8]       ; 4.606 ;    ;    ; 4.606 ;
+; instruction[9]  ; jump_offset[9]  ; 4.679 ;    ;    ; 4.679 ;
+; instruction[9]  ; offset[9]       ; 4.669 ;    ;    ; 4.669 ;
+; instruction[10] ; jump_offset[10] ; 4.706 ;    ;    ; 4.706 ;
+; instruction[10] ; offset[10]      ; 4.586 ;    ;    ; 4.586 ;
+; instruction[11] ; jump_offset[11] ; 4.964 ;    ;    ; 4.964 ;
+; instruction[11] ; offset[11]      ; 4.942 ;    ;    ; 4.942 ;
+; instruction[11] ; register3[0]    ; 4.942 ;    ;    ; 4.942 ;
+; instruction[12] ; jump_offset[12] ; 4.576 ;    ;    ; 4.576 ;
+; instruction[12] ; offset[12]      ; 4.546 ;    ;    ; 4.546 ;
+; instruction[12] ; register3[1]    ; 4.576 ;    ;    ; 4.576 ;
+; instruction[13] ; jump_offset[13] ; 4.660 ;    ;    ; 4.660 ;
+; instruction[13] ; offset[13]      ; 4.680 ;    ;    ; 4.680 ;
+; instruction[13] ; register3[2]    ; 4.660 ;    ;    ; 4.660 ;
+; instruction[14] ; jump_offset[14] ; 4.971 ;    ;    ; 4.971 ;
+; instruction[14] ; offset[14]      ; 4.971 ;    ;    ; 4.971 ;
+; instruction[14] ; register3[3]    ; 4.924 ;    ;    ; 4.924 ;
+; instruction[15] ; jump_offset[15] ; 5.246 ;    ;    ; 5.246 ;
+; instruction[15] ; offset[15]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[16]      ; 5.236 ;    ;    ; 5.236 ;
+; instruction[15] ; offset[17]      ; 5.392 ;    ;    ; 5.392 ;
+; instruction[15] ; offset[18]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[19]      ; 5.232 ;    ;    ; 5.232 ;
+; instruction[15] ; offset[20]      ; 5.402 ;    ;    ; 5.402 ;
+; instruction[15] ; offset[21]      ; 5.412 ;    ;    ; 5.412 ;
+; instruction[15] ; offset[22]      ; 5.335 ;    ;    ; 5.335 ;
+; instruction[15] ; offset[23]      ; 5.216 ;    ;    ; 5.216 ;
+; instruction[15] ; offset[24]      ; 5.315 ;    ;    ; 5.315 ;
+; instruction[15] ; offset[25]      ; 5.212 ;    ;    ; 5.212 ;
+; instruction[15] ; offset[26]      ; 5.214 ;    ;    ; 5.214 ;
+; instruction[15] ; offset[27]      ; 5.325 ;    ;    ; 5.325 ;
+; instruction[15] ; offset[28]      ; 5.202 ;    ;    ; 5.202 ;
+; instruction[15] ; offset[29]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[30]      ; 5.212 ;    ;    ; 5.212 ;
+; instruction[15] ; offset[31]      ; 5.204 ;    ;    ; 5.204 ;
+; instruction[15] ; register3[4]    ; 5.216 ;    ;    ; 5.216 ;
+; instruction[16] ; jump_offset[16] ; 5.016 ;    ;    ; 5.016 ;
+; instruction[16] ; register2[0]    ; 5.016 ;    ;    ; 5.016 ;
+; instruction[17] ; jump_offset[17] ; 4.969 ;    ;    ; 4.969 ;
+; instruction[17] ; register2[1]    ; 4.969 ;    ;    ; 4.969 ;
+; instruction[18] ; jump_offset[18] ; 5.043 ;    ;    ; 5.043 ;
+; instruction[18] ; register2[2]    ; 5.043 ;    ;    ; 5.043 ;
+; instruction[19] ; jump_offset[19] ; 5.072 ;    ;    ; 5.072 ;
+; instruction[19] ; register2[3]    ; 5.042 ;    ;    ; 5.042 ;
+; instruction[20] ; jump_offset[20] ; 5.017 ;    ;    ; 5.017 ;
+; instruction[20] ; register2[4]    ; 5.050 ;    ;    ; 5.050 ;
+; instruction[21] ; jump_offset[21] ; 4.576 ;    ;    ; 4.576 ;
+; instruction[21] ; register1[0]    ; 4.576 ;    ;    ; 4.576 ;
+; instruction[22] ; jump_offset[22] ; 4.552 ;    ;    ; 4.552 ;
+; instruction[22] ; register1[1]    ; 4.552 ;    ;    ; 4.552 ;
+; instruction[23] ; jump_offset[23] ; 4.606 ;    ;    ; 4.606 ;
+; instruction[23] ; register1[2]    ; 4.606 ;    ;    ; 4.606 ;
+; instruction[24] ; jump_offset[24] ; 4.560 ;    ;    ; 4.560 ;
+; instruction[24] ; register1[3]    ; 4.530 ;    ;    ; 4.530 ;
+; instruction[25] ; jump_offset[25] ; 4.977 ;    ;    ; 4.977 ;
+; instruction[25] ; register1[4]    ; 4.967 ;    ;    ; 4.967 ;
++-----------------+-----------------+-------+----+----+-------+
+
+
++------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                          ;
++------------------+--------+-------+----------+---------+---------------------+
+; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+--------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -0.533 ; 0.249 ; N/A      ; N/A     ; -1.631              ;
+;  clock           ; -0.533 ; 0.249 ; N/A      ; N/A     ; -1.631              ;
+; Design-wide TNS  ; -3.391 ; 0.0   ; 0.0      ; 0.0     ; -24.849             ;
+;  clock           ; -3.391 ; 0.000 ; N/A      ; N/A     ; -24.849             ;
++------------------+--------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++------------------+------------+-------+-------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------------+------------+-------+-------+------------+-----------------+
+; instruction[*]   ; clock      ; 7.596 ; 7.596 ; Rise       ; clock           ;
+;  instruction[0]  ; clock      ; 7.189 ; 7.189 ; Rise       ; clock           ;
+;  instruction[1]  ; clock      ; 5.039 ; 5.039 ; Rise       ; clock           ;
+;  instruction[2]  ; clock      ; 7.596 ; 7.596 ; Rise       ; clock           ;
+;  instruction[3]  ; clock      ; 7.327 ; 7.327 ; Rise       ; clock           ;
+;  instruction[4]  ; clock      ; 7.050 ; 7.050 ; Rise       ; clock           ;
+;  instruction[5]  ; clock      ; 4.861 ; 4.861 ; Rise       ; clock           ;
+;  instruction[26] ; clock      ; 6.793 ; 6.793 ; Rise       ; clock           ;
+;  instruction[27] ; clock      ; 6.827 ; 6.827 ; Rise       ; clock           ;
+;  instruction[28] ; clock      ; 6.604 ; 6.604 ; Rise       ; clock           ;
+;  instruction[29] ; clock      ; 5.365 ; 5.365 ; Rise       ; clock           ;
+;  instruction[30] ; clock      ; 3.658 ; 3.658 ; Rise       ; clock           ;
+;  instruction[31] ; clock      ; 6.754 ; 6.754 ; Rise       ; clock           ;
++------------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Hold Times                                                                     ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; instruction[*]   ; clock      ; -0.012 ; -0.012 ; Rise       ; clock           ;
+;  instruction[0]  ; clock      ; -2.629 ; -2.629 ; Rise       ; clock           ;
+;  instruction[1]  ; clock      ; -1.733 ; -1.733 ; Rise       ; clock           ;
+;  instruction[2]  ; clock      ; -2.799 ; -2.799 ; Rise       ; clock           ;
+;  instruction[3]  ; clock      ; -2.701 ; -2.701 ; Rise       ; clock           ;
+;  instruction[4]  ; clock      ; -2.549 ; -2.549 ; Rise       ; clock           ;
+;  instruction[5]  ; clock      ; -1.633 ; -1.633 ; Rise       ; clock           ;
+;  instruction[26] ; clock      ; -1.534 ; -1.534 ; Rise       ; clock           ;
+;  instruction[27] ; clock      ; -1.732 ; -1.732 ; Rise       ; clock           ;
+;  instruction[28] ; clock      ; -1.683 ; -1.683 ; Rise       ; clock           ;
+;  instruction[29] ; clock      ; -1.596 ; -1.596 ; Rise       ; clock           ;
+;  instruction[30] ; clock      ; -0.012 ; -0.012 ; Rise       ; clock           ;
+;  instruction[31] ; clock      ; -1.699 ; -1.699 ; Rise       ; clock           ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                  ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; Data Port                  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; alu_operation[*]           ; clock      ; 7.169 ; 7.169 ; Rise       ; clock           ;
+;  alu_operation[0]          ; clock      ; 7.169 ; 7.169 ; Rise       ; clock           ;
+;  alu_operation[1]          ; clock      ; 6.860 ; 6.860 ; Rise       ; clock           ;
+;  alu_operation[2]          ; clock      ; 6.881 ; 6.881 ; Rise       ; clock           ;
+; branch                     ; clock      ; 7.160 ; 7.160 ; Rise       ; clock           ;
+; branch2                    ; clock      ; 7.156 ; 7.156 ; Rise       ; clock           ;
+; enable_alu_output_register ; clock      ; 7.136 ; 7.136 ; Rise       ; clock           ;
+; enable_program_counter     ; clock      ; 6.870 ; 6.870 ; Rise       ; clock           ;
+; jump_control               ; clock      ; 7.158 ; 7.158 ; Rise       ; clock           ;
+; mem_to_register            ; clock      ; 6.883 ; 6.883 ; Rise       ; clock           ;
+; read_memory                ; clock      ; 7.139 ; 7.139 ; Rise       ; clock           ;
+; reg_dst                    ; clock      ; 6.883 ; 6.883 ; Rise       ; clock           ;
+; source_alu                 ; clock      ; 7.136 ; 7.136 ; Rise       ; clock           ;
+; write_memory               ; clock      ; 6.876 ; 6.876 ; Rise       ; clock           ;
+; write_register             ; clock      ; 6.873 ; 6.873 ; Rise       ; clock           ;
++----------------------------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                          ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; Data Port                  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++----------------------------+------------+-------+-------+------------+-----------------+
+; alu_operation[*]           ; clock      ; 3.745 ; 3.745 ; Rise       ; clock           ;
+;  alu_operation[0]          ; clock      ; 3.884 ; 3.884 ; Rise       ; clock           ;
+;  alu_operation[1]          ; clock      ; 3.745 ; 3.745 ; Rise       ; clock           ;
+;  alu_operation[2]          ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; branch                     ; clock      ; 3.875 ; 3.875 ; Rise       ; clock           ;
+; branch2                    ; clock      ; 3.871 ; 3.871 ; Rise       ; clock           ;
+; enable_alu_output_register ; clock      ; 3.851 ; 3.851 ; Rise       ; clock           ;
+; enable_program_counter     ; clock      ; 3.756 ; 3.756 ; Rise       ; clock           ;
+; jump_control               ; clock      ; 3.873 ; 3.873 ; Rise       ; clock           ;
+; mem_to_register            ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; read_memory                ; clock      ; 3.850 ; 3.850 ; Rise       ; clock           ;
+; reg_dst                    ; clock      ; 3.767 ; 3.767 ; Rise       ; clock           ;
+; source_alu                 ; clock      ; 3.852 ; 3.852 ; Rise       ; clock           ;
+; write_memory               ; clock      ; 3.759 ; 3.759 ; Rise       ; clock           ;
+; write_register             ; clock      ; 3.758 ; 3.758 ; Rise       ; clock           ;
++----------------------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------+
+; Progagation Delay                                             ;
++-----------------+-----------------+--------+----+----+--------+
+; Input Port      ; Output Port     ; RR     ; RF ; FR ; FF     ;
++-----------------+-----------------+--------+----+----+--------+
+; instruction[0]  ; jump_offset[0]  ; 9.575  ;    ;    ; 9.575  ;
+; instruction[0]  ; offset[0]       ; 9.575  ;    ;    ; 9.575  ;
+; instruction[1]  ; jump_offset[1]  ; 9.578  ;    ;    ; 9.578  ;
+; instruction[1]  ; offset[1]       ; 9.588  ;    ;    ; 9.588  ;
+; instruction[2]  ; jump_offset[2]  ; 9.646  ;    ;    ; 9.646  ;
+; instruction[2]  ; offset[2]       ; 9.636  ;    ;    ; 9.636  ;
+; instruction[3]  ; jump_offset[3]  ; 9.593  ;    ;    ; 9.593  ;
+; instruction[3]  ; offset[3]       ; 9.593  ;    ;    ; 9.593  ;
+; instruction[4]  ; jump_offset[4]  ; 9.470  ;    ;    ; 9.470  ;
+; instruction[4]  ; offset[4]       ; 9.533  ;    ;    ; 9.533  ;
+; instruction[5]  ; jump_offset[5]  ; 9.504  ;    ;    ; 9.504  ;
+; instruction[5]  ; offset[5]       ; 9.504  ;    ;    ; 9.504  ;
+; instruction[6]  ; jump_offset[6]  ; 8.544  ;    ;    ; 8.544  ;
+; instruction[6]  ; offset[6]       ; 8.544  ;    ;    ; 8.544  ;
+; instruction[7]  ; jump_offset[7]  ; 9.596  ;    ;    ; 9.596  ;
+; instruction[7]  ; offset[7]       ; 9.640  ;    ;    ; 9.640  ;
+; instruction[8]  ; jump_offset[8]  ; 8.514  ;    ;    ; 8.514  ;
+; instruction[8]  ; offset[8]       ; 8.544  ;    ;    ; 8.544  ;
+; instruction[9]  ; jump_offset[9]  ; 8.763  ;    ;    ; 8.763  ;
+; instruction[9]  ; offset[9]       ; 8.753  ;    ;    ; 8.753  ;
+; instruction[10] ; jump_offset[10] ; 8.689  ;    ;    ; 8.689  ;
+; instruction[10] ; offset[10]      ; 8.524  ;    ;    ; 8.524  ;
+; instruction[11] ; jump_offset[11] ; 9.491  ;    ;    ; 9.491  ;
+; instruction[11] ; offset[11]      ; 9.469  ;    ;    ; 9.469  ;
+; instruction[11] ; register3[0]    ; 9.469  ;    ;    ; 9.469  ;
+; instruction[12] ; jump_offset[12] ; 8.514  ;    ;    ; 8.514  ;
+; instruction[12] ; offset[12]      ; 8.484  ;    ;    ; 8.484  ;
+; instruction[12] ; register3[1]    ; 8.514  ;    ;    ; 8.514  ;
+; instruction[13] ; jump_offset[13] ; 8.744  ;    ;    ; 8.744  ;
+; instruction[13] ; offset[13]      ; 8.764  ;    ;    ; 8.764  ;
+; instruction[13] ; register3[2]    ; 8.744  ;    ;    ; 8.744  ;
+; instruction[14] ; jump_offset[14] ; 9.502  ;    ;    ; 9.502  ;
+; instruction[14] ; offset[14]      ; 9.502  ;    ;    ; 9.502  ;
+; instruction[14] ; register3[3]    ; 9.307  ;    ;    ; 9.307  ;
+; instruction[15] ; jump_offset[15] ; 9.938  ;    ;    ; 9.938  ;
+; instruction[15] ; offset[15]      ; 9.914  ;    ;    ; 9.914  ;
+; instruction[15] ; offset[16]      ; 9.928  ;    ;    ; 9.928  ;
+; instruction[15] ; offset[17]      ; 10.436 ;    ;    ; 10.436 ;
+; instruction[15] ; offset[18]      ; 9.914  ;    ;    ; 9.914  ;
+; instruction[15] ; offset[19]      ; 9.926  ;    ;    ; 9.926  ;
+; instruction[15] ; offset[20]      ; 10.446 ;    ;    ; 10.446 ;
+; instruction[15] ; offset[21]      ; 10.456 ;    ;    ; 10.456 ;
+; instruction[15] ; offset[22]      ; 10.206 ;    ;    ; 10.206 ;
+; instruction[15] ; offset[23]      ; 9.908  ;    ;    ; 9.908  ;
+; instruction[15] ; offset[24]      ; 10.186 ;    ;    ; 10.186 ;
+; instruction[15] ; offset[25]      ; 9.904  ;    ;    ; 9.904  ;
+; instruction[15] ; offset[26]      ; 9.906  ;    ;    ; 9.906  ;
+; instruction[15] ; offset[27]      ; 10.196 ;    ;    ; 10.196 ;
+; instruction[15] ; offset[28]      ; 9.896  ;    ;    ; 9.896  ;
+; instruction[15] ; offset[29]      ; 9.916  ;    ;    ; 9.916  ;
+; instruction[15] ; offset[30]      ; 9.906  ;    ;    ; 9.906  ;
+; instruction[15] ; offset[31]      ; 9.896  ;    ;    ; 9.896  ;
+; instruction[15] ; register3[4]    ; 9.908  ;    ;    ; 9.908  ;
+; instruction[16] ; jump_offset[16] ; 9.572  ;    ;    ; 9.572  ;
+; instruction[16] ; register2[0]    ; 9.572  ;    ;    ; 9.572  ;
+; instruction[17] ; jump_offset[17] ; 9.349  ;    ;    ; 9.349  ;
+; instruction[17] ; register2[1]    ; 9.349  ;    ;    ; 9.349  ;
+; instruction[18] ; jump_offset[18] ; 9.604  ;    ;    ; 9.604  ;
+; instruction[18] ; register2[2]    ; 9.604  ;    ;    ; 9.604  ;
+; instruction[19] ; jump_offset[19] ; 9.630  ;    ;    ; 9.630  ;
+; instruction[19] ; register2[3]    ; 9.600  ;    ;    ; 9.600  ;
+; instruction[20] ; jump_offset[20] ; 9.555  ;    ;    ; 9.555  ;
+; instruction[20] ; register2[4]    ; 9.604  ;    ;    ; 9.604  ;
+; instruction[21] ; jump_offset[21] ; 8.514  ;    ;    ; 8.514  ;
+; instruction[21] ; register1[0]    ; 8.514  ;    ;    ; 8.514  ;
+; instruction[22] ; jump_offset[22] ; 8.473  ;    ;    ; 8.473  ;
+; instruction[22] ; register1[1]    ; 8.473  ;    ;    ; 8.473  ;
+; instruction[23] ; jump_offset[23] ; 8.544  ;    ;    ; 8.544  ;
+; instruction[23] ; register1[2]    ; 8.544  ;    ;    ; 8.544  ;
+; instruction[24] ; jump_offset[24] ; 8.489  ;    ;    ; 8.489  ;
+; instruction[24] ; register1[3]    ; 8.459  ;    ;    ; 8.459  ;
+; instruction[25] ; jump_offset[25] ; 9.513  ;    ;    ; 9.513  ;
+; instruction[25] ; register1[4]    ; 9.503  ;    ;    ; 9.503  ;
++-----------------+-----------------+--------+----+----+--------+
+
+
++-------------------------------------------------------------+
+; Minimum Progagation Delay                                   ;
++-----------------+-----------------+-------+----+----+-------+
+; Input Port      ; Output Port     ; RR    ; RF ; FR ; FF    ;
++-----------------+-----------------+-------+----+----+-------+
+; instruction[0]  ; jump_offset[0]  ; 5.023 ;    ;    ; 5.023 ;
+; instruction[0]  ; offset[0]       ; 5.023 ;    ;    ; 5.023 ;
+; instruction[1]  ; jump_offset[1]  ; 5.045 ;    ;    ; 5.045 ;
+; instruction[1]  ; offset[1]       ; 5.055 ;    ;    ; 5.055 ;
+; instruction[2]  ; jump_offset[2]  ; 5.085 ;    ;    ; 5.085 ;
+; instruction[2]  ; offset[2]       ; 5.075 ;    ;    ; 5.075 ;
+; instruction[3]  ; jump_offset[3]  ; 5.042 ;    ;    ; 5.042 ;
+; instruction[3]  ; offset[3]       ; 5.042 ;    ;    ; 5.042 ;
+; instruction[4]  ; jump_offset[4]  ; 4.942 ;    ;    ; 4.942 ;
+; instruction[4]  ; offset[4]       ; 4.993 ;    ;    ; 4.993 ;
+; instruction[5]  ; jump_offset[5]  ; 4.974 ;    ;    ; 4.974 ;
+; instruction[5]  ; offset[5]       ; 4.974 ;    ;    ; 4.974 ;
+; instruction[6]  ; jump_offset[6]  ; 4.606 ;    ;    ; 4.606 ;
+; instruction[6]  ; offset[6]       ; 4.606 ;    ;    ; 4.606 ;
+; instruction[7]  ; jump_offset[7]  ; 5.046 ;    ;    ; 5.046 ;
+; instruction[7]  ; offset[7]       ; 5.079 ;    ;    ; 5.079 ;
+; instruction[8]  ; jump_offset[8]  ; 4.576 ;    ;    ; 4.576 ;
+; instruction[8]  ; offset[8]       ; 4.606 ;    ;    ; 4.606 ;
+; instruction[9]  ; jump_offset[9]  ; 4.679 ;    ;    ; 4.679 ;
+; instruction[9]  ; offset[9]       ; 4.669 ;    ;    ; 4.669 ;
+; instruction[10] ; jump_offset[10] ; 4.706 ;    ;    ; 4.706 ;
+; instruction[10] ; offset[10]      ; 4.586 ;    ;    ; 4.586 ;
+; instruction[11] ; jump_offset[11] ; 4.964 ;    ;    ; 4.964 ;
+; instruction[11] ; offset[11]      ; 4.942 ;    ;    ; 4.942 ;
+; instruction[11] ; register3[0]    ; 4.942 ;    ;    ; 4.942 ;
+; instruction[12] ; jump_offset[12] ; 4.576 ;    ;    ; 4.576 ;
+; instruction[12] ; offset[12]      ; 4.546 ;    ;    ; 4.546 ;
+; instruction[12] ; register3[1]    ; 4.576 ;    ;    ; 4.576 ;
+; instruction[13] ; jump_offset[13] ; 4.660 ;    ;    ; 4.660 ;
+; instruction[13] ; offset[13]      ; 4.680 ;    ;    ; 4.680 ;
+; instruction[13] ; register3[2]    ; 4.660 ;    ;    ; 4.660 ;
+; instruction[14] ; jump_offset[14] ; 4.971 ;    ;    ; 4.971 ;
+; instruction[14] ; offset[14]      ; 4.971 ;    ;    ; 4.971 ;
+; instruction[14] ; register3[3]    ; 4.924 ;    ;    ; 4.924 ;
+; instruction[15] ; jump_offset[15] ; 5.246 ;    ;    ; 5.246 ;
+; instruction[15] ; offset[15]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[16]      ; 5.236 ;    ;    ; 5.236 ;
+; instruction[15] ; offset[17]      ; 5.392 ;    ;    ; 5.392 ;
+; instruction[15] ; offset[18]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[19]      ; 5.232 ;    ;    ; 5.232 ;
+; instruction[15] ; offset[20]      ; 5.402 ;    ;    ; 5.402 ;
+; instruction[15] ; offset[21]      ; 5.412 ;    ;    ; 5.412 ;
+; instruction[15] ; offset[22]      ; 5.335 ;    ;    ; 5.335 ;
+; instruction[15] ; offset[23]      ; 5.216 ;    ;    ; 5.216 ;
+; instruction[15] ; offset[24]      ; 5.315 ;    ;    ; 5.315 ;
+; instruction[15] ; offset[25]      ; 5.212 ;    ;    ; 5.212 ;
+; instruction[15] ; offset[26]      ; 5.214 ;    ;    ; 5.214 ;
+; instruction[15] ; offset[27]      ; 5.325 ;    ;    ; 5.325 ;
+; instruction[15] ; offset[28]      ; 5.202 ;    ;    ; 5.202 ;
+; instruction[15] ; offset[29]      ; 5.222 ;    ;    ; 5.222 ;
+; instruction[15] ; offset[30]      ; 5.212 ;    ;    ; 5.212 ;
+; instruction[15] ; offset[31]      ; 5.204 ;    ;    ; 5.204 ;
+; instruction[15] ; register3[4]    ; 5.216 ;    ;    ; 5.216 ;
+; instruction[16] ; jump_offset[16] ; 5.016 ;    ;    ; 5.016 ;
+; instruction[16] ; register2[0]    ; 5.016 ;    ;    ; 5.016 ;
+; instruction[17] ; jump_offset[17] ; 4.969 ;    ;    ; 4.969 ;
+; instruction[17] ; register2[1]    ; 4.969 ;    ;    ; 4.969 ;
+; instruction[18] ; jump_offset[18] ; 5.043 ;    ;    ; 5.043 ;
+; instruction[18] ; register2[2]    ; 5.043 ;    ;    ; 5.043 ;
+; instruction[19] ; jump_offset[19] ; 5.072 ;    ;    ; 5.072 ;
+; instruction[19] ; register2[3]    ; 5.042 ;    ;    ; 5.042 ;
+; instruction[20] ; jump_offset[20] ; 5.017 ;    ;    ; 5.017 ;
+; instruction[20] ; register2[4]    ; 5.050 ;    ;    ; 5.050 ;
+; instruction[21] ; jump_offset[21] ; 4.576 ;    ;    ; 4.576 ;
+; instruction[21] ; register1[0]    ; 4.576 ;    ;    ; 4.576 ;
+; instruction[22] ; jump_offset[22] ; 4.552 ;    ;    ; 4.552 ;
+; instruction[22] ; register1[1]    ; 4.552 ;    ;    ; 4.552 ;
+; instruction[23] ; jump_offset[23] ; 4.606 ;    ;    ; 4.606 ;
+; instruction[23] ; register1[2]    ; 4.606 ;    ;    ; 4.606 ;
+; instruction[24] ; jump_offset[24] ; 4.560 ;    ;    ; 4.560 ;
+; instruction[24] ; register1[3]    ; 4.530 ;    ;    ; 4.530 ;
+; instruction[25] ; jump_offset[25] ; 4.977 ;    ;    ; 4.977 ;
+; instruction[25] ; register1[4]    ; 4.967 ;    ;    ; 4.967 ;
++-----------------+-----------------+-------+----+----+-------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clock      ; clock    ; 20       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clock      ; clock    ; 20       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 32    ; 32   ;
+; Unconstrained Input Port Paths  ; 179   ; 179  ;
+; Unconstrained Output Ports      ; 87    ; 87   ;
+; Unconstrained Output Port Paths ; 87    ; 87   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Thu Dec 11 13:40:52 2014
+Info: Command: quartus_sta multicycle -c multicycle
+Info: qsta_default_script.tcl version: #1
+Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'output_files/SDC1.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clock clock
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -0.533
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -0.533        -3.391 clock 
+Info (332146): Worst-case hold slack is 0.633
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.633         0.000 clock 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.631
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.631       -24.849 clock 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332115): Report Timing: Found 1 setup paths (1 violated).  Worst case slack is -0.533
+    Info (332115): -to_clock [get_clocks {clock}]
+    Info (332115): -setup
+    Info (332115): -stdout
+Info (332115): Path #1: Setup slack is -0.533 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): From Node    : next_state.alu
+    Info (332115): To Node      : next_state.alu
+    Info (332115): Launch Clock : clock
+    Info (332115): Latch Clock  : clock
+    Info (332115): 
+    Info (332115): Data Arrival Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      2.869      2.869  R        clock network delay
+    Info (332115):      3.146      0.277     uTco  next_state.alu
+    Info (332115):      3.146      0.000 RR  CELL  next_state.alu|regout
+    Info (332115):      3.546      0.400 RR    IC  Selector2~1|datac
+    Info (332115):      3.868      0.322 RR  CELL  Selector2~1|combout
+    Info (332115):      4.166      0.298 RR    IC  Selector2~2|datad
+    Info (332115):      4.344      0.178 RR  CELL  Selector2~2|combout
+    Info (332115):      4.344      0.000 RR    IC  next_state.alu|datain
+    Info (332115):      4.440      0.096 RR  CELL  next_state.alu
+    Info (332115): 
+    Info (332115): Data Required Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      3.869      2.869  R        clock network delay
+    Info (332115):      3.907      0.038     uTsu  next_state.alu
+    Info (332115): 
+    Info (332115): Data Arrival Time  :     4.440
+    Info (332115): Data Required Time :     3.907
+    Info (332115): Slack              :    -0.533 (VIOLATED)
+    Info (332115): ===================================================================
+    Info (332115): 
+Info (332115): Report Timing: Found 1 hold paths (0 violated).  Worst case slack is 0.633
+    Info (332115): -to_clock [get_clocks {clock}]
+    Info (332115): -hold
+    Info (332115): -stdout
+Info (332115): Path #1: Hold slack is 0.633 
+    Info (332115): ===================================================================
+    Info (332115): From Node    : next_state.fetch
+    Info (332115): To Node      : next_state.decode
+    Info (332115): Launch Clock : clock
+    Info (332115): Latch Clock  : clock
+    Info (332115): 
+    Info (332115): Data Arrival Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      2.869      2.869  R        clock network delay
+    Info (332115):      3.146      0.277     uTco  next_state.fetch
+    Info (332115):      3.146      0.000 FF  CELL  next_state.fetch|regout
+    Info (332115):      3.515      0.369 FF    IC  next_state.decode~0|datad
+    Info (332115):      3.692      0.177 FR  CELL  next_state.decode~0|combout
+    Info (332115):      3.692      0.000 RR    IC  next_state.decode|datain
+    Info (332115):      3.788      0.096 RR  CELL  next_state.decode
+    Info (332115): 
+    Info (332115): Data Required Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           latch edge time
+    Info (332115):      2.869      2.869  R        clock network delay
+    Info (332115):      3.155      0.286      uTh  next_state.decode
+    Info (332115): 
+    Info (332115): Data Arrival Time  :     3.788
+    Info (332115): Data Required Time :     3.155
+    Info (332115): Slack              :     0.633 
+    Info (332115): ===================================================================
+    Info (332115): 
+Info (332113): Report Minimum Pulse Width: Found 1 results (1 violated).  Worst case slack is -1.631
+    Info (332113): Targets: [get_clocks {clock}]
+    Info (332113): -nworst: 1
+    Info (332113): -detail: full_path
+Info (332113): Path #1: slack is -1.631 (VIOLATED)
+    Info (332113): ===================================================================
+    Info (332113): Node             : clock
+    Info (332113): Clock            : clock
+    Info (332113): Type             : Port Rate
+    Info (332113): Required Width   :     2.631
+    Info (332113): Actual Width     :     1.000
+    Info (332113): Slack            :    -1.631 (VIOLATED)
+    Info (332113): ===================================================================
+    Info (332113): 
+Info: Analyzing Fast Model
+Info (332146): Worst-case setup slack is 0.378
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.378         0.000 clock 
+Info (332146): Worst-case hold slack is 0.249
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.249         0.000 clock 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380       -20.380 clock 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332115): Report Timing: Found 1 setup paths (0 violated).  Worst case slack is 0.378
+    Info (332115): -to_clock [get_clocks {clock}]
+    Info (332115): -setup
+    Info (332115): -stdout
+Info (332115): Path #1: Setup slack is 0.378 
+    Info (332115): ===================================================================
+    Info (332115): From Node    : next_state.alu
+    Info (332115): To Node      : next_state.alu
+    Info (332115): Launch Clock : clock
+    Info (332115): Latch Clock  : clock
+    Info (332115): 
+    Info (332115): Data Arrival Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      1.802      1.802  R        clock network delay
+    Info (332115):      1.943      0.141     uTco  next_state.alu
+    Info (332115):      1.943      0.000 RR  CELL  next_state.alu|regout
+    Info (332115):      2.114      0.171 RR    IC  Selector2~1|datac
+    Info (332115):      2.247      0.133 RR  CELL  Selector2~1|combout
+    Info (332115):      2.355      0.108 RR    IC  Selector2~2|datad
+    Info (332115):      2.414      0.059 RR  CELL  Selector2~2|combout
+    Info (332115):      2.414      0.000 RR    IC  next_state.alu|datain
+    Info (332115):      2.456      0.042 RR  CELL  next_state.alu
+    Info (332115): 
+    Info (332115): Data Required Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      1.000      1.000           latch edge time
+    Info (332115):      2.802      1.802  R        clock network delay
+    Info (332115):      2.834      0.032     uTsu  next_state.alu
+    Info (332115): 
+    Info (332115): Data Arrival Time  :     2.456
+    Info (332115): Data Required Time :     2.834
+    Info (332115): Slack              :     0.378 
+    Info (332115): ===================================================================
+    Info (332115): 
+Info (332115): Report Timing: Found 1 hold paths (0 violated).  Worst case slack is 0.249
+    Info (332115): -to_clock [get_clocks {clock}]
+    Info (332115): -hold
+    Info (332115): -stdout
+Info (332115): Path #1: Hold slack is 0.249 
+    Info (332115): ===================================================================
+    Info (332115): From Node    : next_state.mem
+    Info (332115): To Node      : read_memory~reg0
+    Info (332115): Launch Clock : clock
+    Info (332115): Latch Clock  : clock
+    Info (332115): 
+    Info (332115): Data Arrival Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           launch edge time
+    Info (332115):      1.802      1.802  R        clock network delay
+    Info (332115):      1.943      0.141     uTco  next_state.mem
+    Info (332115):      1.943      0.000 RR  CELL  next_state.mem|regout
+    Info (332115):      2.102      0.159 RR    IC  read_memory~0|datad
+    Info (332115):      2.161      0.059 RR  CELL  read_memory~0|combout
+    Info (332115):      2.161      0.000 RR    IC  read_memory~reg0|datain
+    Info (332115):      2.203      0.042 RR  CELL  read_memory~reg0
+    Info (332115): 
+    Info (332115): Data Required Path:
+    Info (332115): 
+    Info (332115): Total (ns)  Incr (ns)     Type  Element
+    Info (332115): ==========  ========= ==  ====  ===================================
+    Info (332115):      0.000      0.000           latch edge time
+    Info (332115):      1.802      1.802  R        clock network delay
+    Info (332115):      1.954      0.152      uTh  read_memory~reg0
+    Info (332115): 
+    Info (332115): Data Arrival Time  :     2.203
+    Info (332115): Data Required Time :     1.954
+    Info (332115): Slack              :     0.249 
+    Info (332115): ===================================================================
+    Info (332115): 
+Info (332113): Report Minimum Pulse Width: Found 1 results (1 violated).  Worst case slack is -1.380
+    Info (332113): Targets: [get_clocks {clock}]
+    Info (332113): -nworst: 1
+    Info (332113): -detail: full_path
+Info (332113): Path #1: slack is -1.380 (VIOLATED)
+    Info (332113): ===================================================================
+    Info (332113): Node             : clock
+    Info (332113): Clock            : clock
+    Info (332113): Type             : Port Rate
+    Info (332113): Required Width   :     2.380
+    Info (332113): Actual Width     :     1.000
+    Info (332113): Slack            :    -1.380 (VIOLATED)
+    Info (332113): ===================================================================
+    Info (332113): 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 439 megabytes
+    Info: Processing ended: Thu Dec 11 13:40:55 2014
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
+
+

@@ -1,0 +1,8 @@
+
+State Machine - |control_unit|next_state
+Name next_state.writeback next_state.mem next_state.alu next_state.decode next_state.fetch 
+next_state.fetch 0 0 0 0 0 
+next_state.decode 0 0 0 1 1 
+next_state.alu 0 0 1 0 1 
+next_state.mem 0 1 0 0 1 
+next_state.writeback 1 0 0 0 1 
