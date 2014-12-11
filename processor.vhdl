@@ -49,14 +49,16 @@ end component;
     enable_alu_output_register: out std_logic := '0';
 		register1, register2, register3: out std_logic_vector (4 downto 0);
 		write_register, mem_to_register: out std_logic;
-		source_alu, reg_dst: out std_logic;
+		reg_dst: out std_logic;
+		source_alu: out std_logic_vector (1 downto 0);
 		alu_operation: out std_logic_vector (2 downto 0);
 		read_memory, write_memory: out std_logic;
 		offset: out std_logic_vector (31 downto 0);
 		jump_control: out std_logic;
 		jump_offset: out std_logic_vector(25 downto 0);
 		branch:  out  std_logic;
-		branch2: out std_logic);
+		branch2: out std_logic;
+		source_a: out std_logic);
 	end component;
 
 	component register_bank
@@ -115,8 +117,11 @@ end component;
 	signal alu_operand1, alu_operand2: std_logic_vector(31 downto 0);
 	signal register_a, register_b, alu_result, 		
 	  data_from_alu_output_register: std_logic_vector (31 downto 0);
-	signal source_alu, reg_dst: std_logic;
+	signal reg_dst: std_logic;
+	signal source_alu: std_logic_vector (1 downto 0);
 	signal alu_operation: std_logic_vector (2 downto 0); 
+	signal offset_shift: std_logic_vector(31 downto 0);
+	signal source_a: std_logic;
 
 	-- Signals related to the memory access.
 	signal address_to_read, address_to_write: std_logic_vector (31 downto 0);
@@ -126,9 +131,11 @@ end component;
 begin
 
     instruction_address <= address_of_next_instruction;
-		alu_operand1 <= register_a;
+		alu_operand1 <= register_a when source_a = '0' else register_b;
 		
-		alu_operand2 <= register_b when source_alu = '0' else offset;
+		offset_shift(4 downto 0) <= instruction(10 downto 6);
+		offset_shift(31 downto 5) <= "000000000000000000000000000";
+		alu_operand2 <= register_b when source_alu = "00" else offset when source_alu = "01" else offset_shift;
 		data_to_write_in_register <= data_from_memory when mem_to_register = '1' else data_from_alu_output_register; 
 		destination_register <= register2 when reg_dst = '0' else register3;
 		
@@ -168,9 +175,9 @@ begin
 		  register2, 
 		  register3, 
       write_register,
-		  mem_to_register, 
-		  source_alu, 
+		  mem_to_register,  
 		  reg_dst,
+		  source_alu,
 		  alu_operation, 			
 		  read_memory, 
 		  write_memory, 
@@ -178,7 +185,8 @@ begin
 		  jump_control, 
 		  jump_offset,
 		  branch,
-		  branch2); 
+		  branch2,
+		  source_a); 
 
 		bank_of_registers: register_bank port map (
 		  clk, 

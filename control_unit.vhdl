@@ -11,14 +11,16 @@ entity control_unit is
 		enable_alu_output_register: out std_logic := '0';
 		register1, register2, register3: out std_logic_vector (4 downto 0);
 		write_register, mem_to_register: out std_logic;
-		source_alu, reg_dst: out std_logic;
+	  reg_dst: out std_logic;
+	  source_alu: out std_logic_vector (1 downto 0);
 		alu_operation: out std_logic_vector (2 downto 0);
 		read_memory, write_memory: out std_logic;
 		offset: out std_logic_vector (31 downto 0);
 		jump_control: out std_logic;
 		jump_offset: out std_logic_vector(25 downto 0);
 		branch:  out  std_logic;
-		branch2: out std_logic);
+		branch2: out std_logic;
+		source_a : out std_logic);
 		
 end control_unit;
 
@@ -35,6 +37,7 @@ architecture behavioral of control_unit is
   constant   beq:  std_logic_vector (5 downto 0) := "000100";
   constant   bne:  std_logic_vector (5 downto 0) := "000101";
   constant  addi: std_logic_vector (5 downto 0) := "001000";
+
 
 	function extend_to_32(input: std_logic_vector (15 downto 0)) return std_logic_vector is 
 	variable s: signed (31 downto 0);
@@ -64,12 +67,13 @@ begin
 		jump_control <= '0';
 		read_memory <= '0';
 		reg_dst <= '0';
-		source_alu <= '0';
+		source_alu <= "00";
    	mem_to_register <= '0';
 		write_memory <= '0';
 		write_register <= '0';
     branch <= '0';
     branch2 <= '0';
+    source_a <= '0';
 
 		case next_state is
 
@@ -87,10 +91,10 @@ begin
 				alu_operation <= "010";
 
 				if opcode = lw then
-      		source_alu <= '1';
+      		source_alu <= "01";
 					next_state <= mem;
 				elsif opcode = sw then
-      		source_alu <= '1';
+      		source_alu <= "01";
 					next_state <= mem;
 				elsif opcode = j then
      			jump_control <= '1';
@@ -105,16 +109,24 @@ begin
 				  next_state <= fetch; 
 				elsif opcode = addi then  
  					alu_operation <= "010";
- 					source_alu <= '1';
+ 					source_alu <= "01";
  					next_state <= writeback; 
 				elsif opcode = r then
 					if opcode_r = "000010" then
 						alu_operation <= "110";
+						source_alu <= "10";
+						source_a <= '1';
 						next_state <= writeback;
 					
 					elsif opcode_r = "000000" then
 						alu_operation <= "101";
+						source_alu <= "10";
+						source_a <= '1';
 						next_state <= writeback;
+					
+					elsif opcode_r = "100010" then
+					 alu_operation <= "011";
+					 next_state <= writeback;	
 						
 					else -- tipo r sem ser sll ou srl
 						next_state <= writeback;

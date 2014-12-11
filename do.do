@@ -15,6 +15,7 @@ add wave -group fetch -radix hexadecimal sim:/t_processor/the_processor/register
 add wave -group fetch -radix hexadecimal sim:/t_processor/the_processor/register3
 add wave -group fetch -radix hexadecimal sim:/t_processor/the_processor/offset
 add wave -group fetch -radix hexadecimal sim:/t_processor/the_processor/jump_offset
+add wave -group fetch -radix hexadecimal sim:/t_processor/the_processor/offset_shift
 
 add wave -group decode -radix hexadecimal sim:/t_processor/the_processor/alu_operation
 add wave -group decode -radix hexadecimal sim:/t_processor/the_processor/register_a
@@ -32,7 +33,7 @@ add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch
 add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch_control
 add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch_address
 add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/zero_flag
-add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch_n
+add wave -group alu -radix hexadecimal sim:/t_processor/the_processor/branch2
 
 add wave -group mem -radix hexadecimal sim:/t_processor/the_processor/read_memory
 add wave -group mem -radix hexadecimal sim:/t_processor/the_processor/write_memory

@@ -73,10 +73,11 @@ end component;
 		adder: full_adder_x generic map (width) port map (a, b, x2);
 		subtractor: subtractor_x generic map (width) port map (a, b, x3);
 		slt: slt_x generic map (width) port map (a, b, x4);
+	  sll_x_1 : sll_x generic map (width) port map (a, b, x5);
+  	 srl_x_1 : srl_x generic map (width) port map (a, b, x6);
 		multx: multiplexer generic map (width) port map (x0, x1, x2, x3, x4, x5, x6, x7, 			operation, resul);
 		result <= resul;
     zero_flag <= '1' when resul = zeros else '0';
-	 sll_x_1 : sll_x generic map (width) port map (a, b, x5);
-	 srl_x_1 : srl_x generic map (width) port map (a, b, x6);
+	 
     
 end structural;

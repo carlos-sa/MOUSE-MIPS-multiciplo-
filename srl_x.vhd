@@ -10,6 +10,6 @@ end srl_x;
 
 architecture structural of srl_x is
 begin
-	result <= std_logic_vector(unsigned(b) srl to_integer(unsigned(a)));
+	result <= std_logic_vector(unsigned(a) srl to_integer(unsigned(b)));
 
 end structural; 
