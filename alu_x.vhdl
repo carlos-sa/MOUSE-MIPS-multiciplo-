@@ -49,6 +49,19 @@ architecture structural of alu_x is
 		output: out std_logic_vector (width - 1 downto 0));
 end component;
 
+	component sll_x 
+	generic (width: integer := 32);
+	port (a, b: in std_logic_vector (width - 1 downto 0);
+	result: out std_logic_vector (width - 1 downto 0));
+end component;
+
+	component srl_x 
+	generic (width: integer := 32);
+	port (a, b: in std_logic_vector (width - 1 downto 0);
+	result: out std_logic_vector (width - 1 downto 0));
+end component;
+
+
 	signal x0, x1, x2, x3, x4, x5, x6, x7: std_logic_vector (width - 1 downto 0); 
   constant zeros : std_logic_vector ( width -1 downto 0 ) := (others => '0');
   signal resul: std_logic_vector (width - 1 downto 0);
@@ -63,5 +76,7 @@ end component;
 		multx: multiplexer generic map (width) port map (x0, x1, x2, x3, x4, x5, x6, x7, 			operation, resul);
 		result <= resul;
     zero_flag <= '1' when resul = zeros else '0';
+	 sll_x_1 : sll_x generic map (width) port map (a, b, x5);
+	 srl_x_1 : srl_x generic map (width) port map (a, b, x6);
     
 end structural;

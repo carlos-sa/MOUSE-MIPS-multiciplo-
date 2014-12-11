@@ -18,8 +18,7 @@ entity control_unit is
 		jump_control: out std_logic;
 		jump_offset: out std_logic_vector(25 downto 0);
 		branch:  out  std_logic;
-		branch2: out std_logic;
-		m_read:  out std_logic_vector(1 downto 0));
+		branch2: out std_logic);
 		
 end control_unit;
 
@@ -27,6 +26,7 @@ architecture behavioral of control_unit is
 	type state is (fetch, decode, alu, mem, writeback);
 	signal next_state: state := fetch;
 	signal opcode: std_logic_vector(5 downto 0);
+	signal opcode_r: std_logic_vector(5 downto 0);
 
 	constant    lw:  std_logic_vector (5 downto 0) := "100011";
 	constant    sw:  std_logic_vector (5 downto 0) := "101011";
@@ -35,7 +35,6 @@ architecture behavioral of control_unit is
   constant   beq:  std_logic_vector (5 downto 0) := "000100";
   constant   bne:  std_logic_vector (5 downto 0) := "000101";
   constant  addi: std_logic_vector (5 downto 0) := "001000";
-  constant  mrd:  std_logic_vector (5 downto 0) := "111011";
 
 	function extend_to_32(input: std_logic_vector (15 downto 0)) return std_logic_vector is 
 	variable s: signed (31 downto 0);
@@ -52,6 +51,7 @@ begin
 	register2 <= instruction(20 downto 16);
 	register3 <= instruction(15 downto 11);
   jump_offset <= instruction(25 downto 0);
+  opcode_r <= instruction(5 downto 0);
 
 	next_state_function: process(clock)
 	begin
@@ -70,7 +70,6 @@ begin
 		write_register <= '0';
     branch <= '0';
     branch2 <= '0';
-	 m_read <= "00";
 
 		case next_state is
 
@@ -108,13 +107,19 @@ begin
  					alu_operation <= "010";
  					source_alu <= '1';
  					next_state <= writeback; 
-				elsif opcode = mrd then
-					m_read <= "01";
-					reg_dst <= '0';
-					write_register <= '1';
-					next_state <= writeback;
-				else --if opcode = r then
-					next_state <= writeback;
+				elsif opcode = r then
+					if opcode_r = "000010" then
+						alu_operation <= "110";
+						next_state <= writeback;
+					
+					elsif opcode_r = "000000" then
+						alu_operation <= "101";
+						next_state <= writeback;
+						
+					else -- tipo r sem ser sll ou srl
+						next_state <= writeback;
+					end if;
+				
 				end if;
 				
 				
@@ -133,13 +138,9 @@ begin
 				-- write regiter result
         if opcode = lw then
    				mem_to_register <= '1';
-   		elsif opcode = addi then
+   	  elsif opcode = addi then
  				  reg_dst <= '0';
-			elsif opcode = mrd then
-					m_read <= "10";
-					reg_dst <= '1';
-					write_register <= '1';
-        else
+        else 
 				  reg_dst <= '1';
         end if;
 				write_register <= '1';

@@ -4,7 +4,6 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity processor is
 	port (clock, turn_off: in std_logic;
-		mouse_dx, mouse_dy  :in std_logic_vector(31 downto 0);
 		instruction_address, current_instruction, data_in_last_modified_register, video_out: 
 		out std_logic_vector (31 downto 0);
     video_address: in std_logic_vector(11 downto 0));
@@ -57,8 +56,7 @@ end component;
 		jump_control: out std_logic;
 		jump_offset: out std_logic_vector(25 downto 0);
 		branch:  out  std_logic;
-		branch2: out std_logic;
-		m_read:  out std_logic_vector(1 downto 0));
+		branch2: out std_logic);
 	end component;
 
 	component register_bank
@@ -109,10 +107,9 @@ end component;
 
 	-- Signals related to the banck of registers.
 	signal destination_register, register1, register2, register3: std_logic_vector (4 downto 0);
-	signal data_from_register1, data_from_register2, data_to_write_in_register,data_to_write_in_register1: 
+	signal data_from_register1, data_from_register2, data_to_write_in_register: 
 		std_logic_vector (31 downto 0); 
 	signal write_register, mem_to_register: std_logic;
-	signal m_read :std_logic_vector(1 downto 0);
 
 	-- Signals related to the ALU.
 	signal alu_operand1, alu_operand2: std_logic_vector(31 downto 0);
@@ -132,10 +129,7 @@ begin
 		alu_operand1 <= register_a;
 		
 		alu_operand2 <= register_b when source_alu = '0' else offset;
-		data_to_write_in_register1 <= data_from_memory when mem_to_register = '1' else data_from_alu_output_register; 
-		data_to_write_in_register <= mouse_dx  when m_read="01" else
-											  mouse_dy  when m_read="10" else 
-											  data_to_write_in_register1;
+		data_to_write_in_register <= data_from_memory when mem_to_register = '1' else data_from_alu_output_register; 
 		destination_register <= register2 when reg_dst = '0' else register3;
 		
 		address_to_read <= data_from_alu_output_register;
@@ -184,8 +178,7 @@ begin
 		  jump_control, 
 		  jump_offset,
 		  branch,
-		  branch2,
-		  m_read); 
+		  branch2); 
 
 		bank_of_registers: register_bank port map (
 		  clk, 
