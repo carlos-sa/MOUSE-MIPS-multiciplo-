@@ -26,7 +26,7 @@ architecture behavioral of instructions_memory is
 		-- sw $a1, 0 ($t0)
 	 2 => X"ad050000",
 	   -- j 1
-	 3 => X"08100000",
+	 3 => X"08000001",
 		
 		
 		

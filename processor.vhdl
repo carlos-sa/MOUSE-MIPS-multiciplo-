@@ -7,7 +7,8 @@ entity processor is
 		instruction_address, current_instruction, data_in_last_modified_register, video_out: 
 		out std_logic_vector (31 downto 0);
     video_address: in std_logic_vector(11 downto 0);
-	 d_col,d_row:   in std_logic_vector(9 downto 0));
+	 d_row,d_col:   in std_logic_vector(9 downto 0);
+	 r_row, r_col:  out std_logic_vector(9 downto 0));
 end processor;
 
 architecture behavioral of processor is
@@ -143,6 +144,8 @@ begin
 		row_ext(9 downto 0) <= d_row (9 downto 0);
 		col_ext(31 downto 10) <= "0000000000000000000000";
 		row_ext(31 downto 10) <= "0000000000000000000000";
+		r_row <= d_row;
+		r_col <= d_col;
 		
 		offset_shift(4 downto 0) <= instruction(10 downto 6);
 		offset_shift(31 downto 5) <= "000000000000000000000000000";

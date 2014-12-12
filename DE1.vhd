@@ -31,7 +31,8 @@ component processor
 		instruction_address, current_instruction, data_in_last_modified_register, video_out: 
 		out std_logic_vector (31 downto 0);
     video_address: in std_logic_vector(11 downto 0);
-	 d_col,d_row:   in std_logic_vector(9 downto 0));
+	 d_row,d_col:   in std_logic_vector(9 downto 0);
+	 r_row, r_col:  out std_LOGIC_VECTOR(9 downto 0));
 end component;
 
 COMPONENT vga_controller
@@ -100,12 +101,20 @@ SIGNAL row, column: integer;
 SIGNAL video_address: std_LOGIC_VECTOR(11 downto 0);
 signal instruction_address, current_instruction, data_in_last_modified_register, video_out: std_logic_vector(31 downto 0);
 signal res: std_logic;
-signal m_row, m_col: std_LOGIC_VECTOR(9 downto 0);
+signal m_row, m_col, r_row, r_col: std_LOGIC_VECTOR(9 downto 0);
 
 BEGIN
 
   --LEDR <= data_in_last_modified_register(9 downto 0);
   --LEDG <= current_instruction(31 downto 24);
+  
+  --LEDR <= r_col;
+  --LEDG <= r_row(7 downto 0);
+  
+  res <= not KEY(3);
+  
+  LEDR <= m_row;
+  LEDG <= m_col(7 downto 0);
   
   d3: dec7seg port map (
     instruction_address(15 downto 12),
@@ -134,7 +143,8 @@ BEGIN
     current_instruction, 
     data_in_last_modified_register, 
     video_out, video_address,
-	 m_row, m_col);
+	 m_row, m_col,
+	 r_row, r_col);
 
   docoder: address_video port map (
     column,

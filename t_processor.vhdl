@@ -15,7 +15,7 @@ architecture behavioral of t_processor is
 			signal expected: std_logic_vector (31 downto 0) := 			"00000000000000000000000000101010";
 	signal video_address: std_logic_vector(11 downto 0);
 
-
+signal COL_M, ROW_M: std_logic_vector (9 downto 0);
 
 SIGNAL pixel_clk: std_logic;
 SIGNAL disp_ena: std_logic;
@@ -37,7 +37,8 @@ signal row_div2 : unsigned(11 downto 0);
 	port (clock, turn_off: in std_logic;
 		instruction_address, current_instruction, data_in_last_modified_register, video_out: 
 		out std_logic_vector (31 downto 0);
-    video_address: in std_logic_vector(11 downto 0));
+    video_address: in std_logic_vector(11 downto 0);
+    d_row,d_col:   in std_logic_vector(9 downto 0));
 	end component;
 	
 	COMPONENT vga_controller
@@ -66,7 +67,7 @@ END COMPONENT;
 
 begin
 
-		the_processor: processor port map (clock, turn_off, instruction_address, current_instruction, 			data_in_last_modified_register, video_out, video_address);
+		the_processor: processor port map (clock, turn_off, instruction_address, current_instruction, 			data_in_last_modified_register, video_out, video_address,ROW_M, COL_M );
 
     video_card: vga_controller port map (clock, '1', VGA_HS_d(0), VGA_VS_d(0), disp_ena_d(0), column, row);
 

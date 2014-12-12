@@ -69,6 +69,6 @@ WaveRestoreCursors {{beq que nao salta} {195000 ps} 1} {{bne que nao salta} {224
 
 configure wave -shortnames 1
 
-run 500 ns
+run 1000 ns
 
 wave zoom full
