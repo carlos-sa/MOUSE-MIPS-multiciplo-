@@ -21,8 +21,8 @@ architecture behavioral of data_memory is
 	type data_sequence is array (0 to 2**address_width - 1) of std_logic_vector (data_width - 1 downto 0);  
 -- ModelSim
 	signal data: data_sequence := (
-    0 => "00000000000000000000000000000001",
-		1 => "10101100110001111000110011001010",
+    0 => "00000000000000000000000000000000",
+		1 => "00000000000000000000000000000000",
 		others => (others => 'U'));
 -- Quartus II
 --	signal data: data_sequence;
