@@ -29,4 +29,24 @@ Membros
 
 - Felipe José Bento da Silva - Email: felipejosebento@outlook.com
 
-= Projeto Final
+Títulos Conclusivos 
+-
+  Para realizar a interface entre o mouse e o processador, foram adicionadas duas entradas no multiplexador de escrita do banco de registradores. Nessas duas entradas conectou-se as saídas do controlador do mouse que por sua vez representam a posição do cursor. Em seguida foi criado um programa em Assembly para calcular a posição que deve ser gravada na memória de vídeo. 
+    
+  Uma vez que para tornar esses procedimentos possíveis, foi necessário a criação de algumas instruçoes. 
+  
+- MTR, instrução responsável por captar os dados do mouse e guardar em dois registradores específicos;
+- SLL;
+- SRL;
+- SUB.
+
+  Segue o link para o vídeo demostratívo do Projeto:
+  
+    https://www.youtube.com/watch?v=lusBbJDTgwQ&feature=youtu.be
+  
+
+
+
+
+
+
